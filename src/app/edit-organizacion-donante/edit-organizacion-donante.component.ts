@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrganizacionDonante } from 'src/model/organizacionDonante';
+import { OrganizacionDonante } from 'src/app/model/organizacionDonante';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';

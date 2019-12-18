@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { OrganizacionDonante } from 'src/model/organizacionDonante';
+import { OrganizacionDonante } from 'src/app/model/organizacionDonante';
 
 @Component({
   selector: 'organizacion-donante',

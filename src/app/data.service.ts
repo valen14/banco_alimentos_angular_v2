@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { OrganizacionDonante } from 'src/model/organizacionDonante';
+import { OrganizacionDonante } from 'src/app/model/organizacionDonante';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
