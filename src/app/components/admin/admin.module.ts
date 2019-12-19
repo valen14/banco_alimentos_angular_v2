@@ -14,10 +14,12 @@ import { BultosComponent } from './admin/bultos/bultos.component';
 import { BultoComponent } from './admin/bultos/bulto/bulto.component';
 import { EnviosComponent } from './admin/envios/envios.component';
 import { EnvioComponent } from './admin/envios/envio/envio.component';
+import { CarsComponent } from './admin/cars/cars.component';
+import { CarComponent } from './admin/cars/car/car.component';
 
 
 @NgModule({
-  declarations: [AdminComponent,  UsersComponent, BeneficiariosComponent, DonantesComponent, VoluntariosComponent, VoluntarioComponent, DonanteComponent, BeneficiarioComponent, BultosComponent, BultoComponent, EnviosComponent, EnvioComponent],
+  declarations: [AdminComponent,  UsersComponent, BeneficiariosComponent, DonantesComponent, VoluntariosComponent, VoluntarioComponent, DonanteComponent, BeneficiarioComponent, BultosComponent, BultoComponent, EnviosComponent, EnvioComponent, CarsComponent, CarComponent],
   imports: [
     CommonModule,
     AdminRoutingModule

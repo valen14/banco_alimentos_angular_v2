@@ -12,6 +12,8 @@ import { BultosComponent } from './admin/bultos/bultos.component';
 import { BultoComponent } from './admin/bultos/bulto/bulto.component';
 import { EnviosComponent } from './admin/envios/envios.component';
 import { EnvioComponent } from './admin/envios/envio/envio.component';
+import { CarsComponent } from './admin/cars/cars.component';
+import { CarComponent } from './admin/cars/car/car.component';
 
 
 const routes: Routes = [
@@ -28,6 +30,8 @@ const routes: Routes = [
         {path: 'voluntarios/:id', component: VoluntarioComponent}
       ]
     },
+    {path: 'cars', component: CarsComponent},
+    {path: 'cars/:id', component: CarComponent},
     {path: 'bultos', component: BultosComponent},
     {path: 'bultos/:id', component: BultoComponent},
     {path: 'envios', component: EnviosComponent},
