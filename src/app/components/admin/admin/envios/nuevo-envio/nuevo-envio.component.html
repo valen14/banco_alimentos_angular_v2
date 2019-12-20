@@ -1,0 +1,22 @@
+<p>nuevo-envio works!</p>
+
+<body class="text-center">
+    <h4>Nuevo Envio</h4>
+    <form class="form-signin" (ngSubmit)="onSubmit()" [formGroup]="envioForm">
+        <h5 class="h3 mb-3 font-weight-normal">Por favor, complete los siguientes campos</h5>
+        
+        <label for="inputEmail" class="sr-only">Descripcion</label>
+        <input type="descripcion" id="inputDesc" class="form-control" placeholder="Descripcion" required autofocus formControlName="descripcion">
+        
+        <label for="inputEmail" class="sr-only">Fecha Maxima</label>
+        <input type="fecha_maxima" id="inputFechaMaxima" class="form-control" placeholder="Fecha de Maxima" required autofocus formControlName="fecha_maxima">
+        
+        <label for="inputEmail" class="sr-only">Fecha Traslado</label>
+        <input type="fecha_traslado" id="inputFechaTraslado" class="form-control" placeholder="Fecha de Traslado" required autofocus formControlName="fecha_traslado">
+        
+        <label for="inputEmail" class="sr-only">Comentario Traslado</label>
+        <input type="comentario_traslado" id="inputComentario" class="form-control" placeholder="Comentario del Traslado" required autofocus formControlName="comentario_traslado">
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Seleccionar Paquetes</button>
+    </form>
+</body>

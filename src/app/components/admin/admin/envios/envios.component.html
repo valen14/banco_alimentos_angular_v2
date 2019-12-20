@@ -1,20 +1,8 @@
 <p>envios works!</p>
 
-<div class="content">
-    <!-- LISTADO BENEFICIARIOS -->
-    <div class="row justify-content-md-center">
-        <ul class="list-group">
-        <li class="list-group-item list-group-item-action" *ngFor="let en of envios; let id=index" >
-            <div>
-                <span>Razon Social: {{en.razonSocial}}</span><br>
-                <span>CUIL: {{en.cuil}}</span><br>
-                <span>Direccion: {{en.direccion}}</span>
-            </div> 
-            <div class="pull-right">
-                <button class="btn btn-primary btn-xs fa fa-eye" [routerLink]="[id]"></button>
-            </div>
-        </li>
-        </ul>
-    </div>
-
-</div>
+<header class="sticky">
+    <a routerLink="sin-asignar" class="button"> <span> Sin Asignar </span> </a>
+    <a routerLink="asignados" class="button"> <span> Asignados </span> </a>
+    <a routerLink="nuevo-envio" class="button"> <span> Nuevo Envio </span> </a>
+</header>
+<router-outlet></router-outlet>
