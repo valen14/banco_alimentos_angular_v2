@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule, FormGroup, FormControl } from '@angular/forms';
 import { ThrowStmt } from '@angular/compiler';
+import { VoluntarioApi, OrganizacionDonanteApi, OrganizacionBeneficiariaApi, Voluntario } from 'src/app/service/lbservice';
 
 @Component({
   selector: 'app-login-form',
@@ -13,7 +14,7 @@ export class LoginFormComponent implements OnInit {
   type= ''
   loginForm:FormGroup
 
-  constructor(ar: ActivatedRoute, private router: Router,) {
+  constructor(ar: ActivatedRoute, private router: Router, private voluntarioService:VoluntarioApi, private donanteService:OrganizacionDonanteApi, private beneficiarioService:OrganizacionBeneficiariaApi) {
     this.type = ar.snapshot.params['type']
     this.loginForm = new FormGroup({
       email:new FormControl(),
@@ -24,7 +25,26 @@ export class LoginFormComponent implements OnInit {
   onSubmit() {
     const emailForm = this.loginForm.get('email').value
     const passForm = this.loginForm.get('password').value
-    this.router.navigateByUrl('login/' + this.type)
+    switch(this.type) {
+      case 'voluntario':
+        this.voluntarioService.find({
+          where: {
+            email: emailForm,
+            password: passForm,
+          }
+        }).subscribe((voluntario) => {
+          if(voluntario.length > 0) {
+            
+          }
+        })
+        break;
+      case 'donante':
+        //
+        break;
+      case 'beneficiario':
+        //
+        break;
+    }
   }
 
   ngOnInit() {

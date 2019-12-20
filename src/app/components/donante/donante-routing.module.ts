@@ -9,18 +9,19 @@ import { InsignasComponent } from './donante/insignas/insignas.component';
 
 
 const routes: Routes = [
-  {path: '', component: DonanteComponent,
-  children:[
-    {path: 'donaciones', component: DonacionesComponent,
-  children:[
-    {path: 'new-donacion', component: NewDonacionComponent},
-  ]
-  },
-    {path: 'donaciones/:id', component: DonacionComponent},
-    
-    {path: 'insignas', component: InsignasComponent}
-  ]
-}
+  {
+    path: '', component: DonanteComponent,
+    children: [
+      {
+        path: 'donaciones', component: DonacionesComponent,
+        children: [
+          { path: 'new-donacion', component: NewDonacionComponent },
+          { path: 'insignas', component: InsignasComponent }
+        ]
+      },
+      { path: 'donaciones/:id', component: DonacionComponent }
+    ]
+  }
 ];
 
 @NgModule({
