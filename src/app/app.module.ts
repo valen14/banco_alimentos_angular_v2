@@ -9,6 +9,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EditOrganizacionDonanteComponent } from './edit-organizacion-donante/edit-organizacion-donante.component';
 import { CoreModule } from './components/core/core.module';
 import { SDKBrowserModule } from './service/lbservice';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './guards/auth.guard'; 
 
 @NgModule({
   declarations: [
@@ -16,6 +19,8 @@ import { SDKBrowserModule } from './service/lbservice';
     OrganizacionDonanteComponent,
     NewOrganizacionDonanteComponent,
     EditOrganizacionDonanteComponent,
+    LoginComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +30,9 @@ import { SDKBrowserModule } from './service/lbservice';
     CoreModule,
     SDKBrowserModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
