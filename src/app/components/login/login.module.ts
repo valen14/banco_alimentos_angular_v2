@@ -4,14 +4,17 @@ import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from '../../app-routing.module';
+import { LoginFormComponent } from './login/login-form/login-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, LoginFormComponent],
   imports: [
     CommonModule,
-    LoginRoutingModule
-  
+    LoginRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class LoginModule { }

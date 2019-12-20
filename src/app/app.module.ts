@@ -8,6 +8,7 @@ import { NewOrganizacionDonanteComponent } from './new-organizacion-donante/new-
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EditOrganizacionDonanteComponent } from './edit-organizacion-donante/edit-organizacion-donante.component';
 import { CoreModule } from './components/core/core.module';
+import { SDKBrowserModule } from './service/lbservice';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CoreModule } from './components/core/core.module';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    CoreModule
+    CoreModule,
+    SDKBrowserModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

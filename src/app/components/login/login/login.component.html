@@ -1,7 +1,52 @@
-<p>login works!</p>
-
-<a routerLink="admin" class="button"> <span> Admin</span> </a>
-<a routerLink="donante" class="button"> <span> Organizacion Donante</span> </a>
-<a routerLink="beneficiario" class="button"> <span> Organizacion Beneficiaria</span> </a>
-<a routerLink="voluntario" class="button"> <span>Voluntario</span> </a>
+<div class="album py-5 bg-light" style="margin:20px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h4>Voluntario</h4>
+                        <p class="card-text">This is a wider card with supporting text below as a natural
+                            lead-in to additional content. This content is a little bit longer.</p>
+                        <div class="d-flex justify-content-center">
+                            <a routerLink="login/voluntario">
+                                <button type="button" class="btn btn-md btn-outline-secondary">Iniciar
+                                    Sesion</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h4>Organizacion Donante</h4>
+                        <p class="card-text">This is a wider card with supporting text below as a natural
+                            lead-in to additional content. This content is a little bit longer.</p>
+                        <div class="d-flex justify-content-center">
+                            <a routerLink="login/donante">
+                                <button type="button" class="btn btn-md btn-outline-secondary">Iniciar
+                                    Sesion</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h4>Organizacion Beneficiaria</h4>
+                        <p class="card-text">This is a wider card with supporting text below as a natural
+                            lead-in to additional content. This content is a little bit longer.</p>
+                        <div class="d-flex justify-content-center">
+                            <a routerLink="login/beneficiario">
+                                <button type="button" class="btn btn-md btn-outline-secondary">Iniciar Sesion</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="text-right" style="margin-right:20px;">Iniciar session como <a routerLink="login/admin" class="button">Admin</a></p>
+</div>
 <router-outlet></router-outlet>

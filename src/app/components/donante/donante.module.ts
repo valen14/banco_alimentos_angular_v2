@@ -11,7 +11,7 @@ import { NewDonacionComponent } from './donante/donaciones/new-donacion/new-dona
 
 
 @NgModule({
-  declarations: [DonanteComponent, InsignasComponent, DonacionesComponent, DonacionComponent, NewDonacionComponent],
+  declarations: [DonanteComponent, InsignasComponent, DonacionesComponent, DonacionComponent, NewDonacionComponent,],
   imports: [
     CommonModule,
     DonanteRoutingModule

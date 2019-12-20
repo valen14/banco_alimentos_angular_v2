@@ -15,7 +15,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ShellComponent, 
     HeaderComponent, 
     MainComponent, 
-    FooterComponent, NotFoundComponent
+    FooterComponent, 
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
