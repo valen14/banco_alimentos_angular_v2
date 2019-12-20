@@ -1,1 +1,29 @@
-<p>register-beneficiario works!</p>
+<body class="text-center">
+    <h4>Registrarse como Beneficiario</h4>
+    <form class="form-signin" (ngSubmit)="onSubmit()" [formGroup]="beneForm">
+        <h5 class="h3 mb-3 font-weight-normal">Por favor, complete los siguientes campos</h5>
+        
+        <label for="inputEmail" class="sr-only">Nombre de Organizacion Beneficiaria</label>
+        <input type="nombreOrg" id="inputNombre" class="form-control" placeholder="Nombre de Organizacion Beneficiaria" required autofocus formControlName="nombreOrg">
+        
+        <label for="inputEmail" class="sr-only">Correo Electrónico</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Correo Electrónico" required autofocus formControlName="email">
+        
+        <label for="inputEmail" class="sr-only">Confirmar Correo Electrónico</label>
+        <input type="confirmarEmail" id="inputConfirmarEmail" class="form-control" placeholder="Confirmar Correo Electrónico" required autofocus formControlName="confirmarEmail">
+        
+        <label for="inputPassword" class="sr-only">Contraseña</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required formControlName="password" >
+        
+        <label for="inputPassword" class="sr-only">Confirmar Contraseña</label>
+        <input type="confirmarPassword" id="inputConfirmarPassword" class="form-control" placeholder="Confirmar Contraseña" required formControlName="confirmarPassword" >
+
+        <label for="inputEmail" class="sr-only">Direccion</label>
+        <input type="direccion" id="inputDireccion" class="form-control" placeholder="Direccion" required autofocus formControlName="direccion">
+        
+        <label for="inputPassword" class="sr-only">Numero de personas que asisten</label>
+        <input type="numeroPersonas" id="inputNumeroPersonas" class="form-control" placeholder="Numero de personas que asisten" required formControlName="numeroPersonas" >
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Confirmar Registro</button>
+    </form>
+</body>
