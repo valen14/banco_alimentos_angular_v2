@@ -12,6 +12,7 @@ export class RegisterBeneficiarioComponent implements OnInit {
 
   beneficiario: OrganizacionBeneficiaria
   beneForm: FormGroup
+  mensaje: string
   constructor(private router: Router, private beneficiarioService: OrganizacionBeneficiariaApi) {
     this.beneForm = new FormGroup ({
       nombreOrg: new FormControl(),
@@ -28,15 +29,24 @@ export class RegisterBeneficiarioComponent implements OnInit {
   }
 
   onSubmit(){
-    const nombreForm= this.beneForm.get('nombreOrg').value
-    const emailForm= this.beneForm.get('email').value
-    const passwordForm= this.beneForm.get('password').value
-    const direccionForm= this.beneForm.get('direccion').value
-    const numeroPersonasForm= this.beneForm.get('numeroPersonas').value
-
-    this.beneficiarioService.create({nombreForm, emailForm, passwordForm, direccionForm, numeroPersonasForm})
-
+    this.register()
     this.router.navigateByUrl('')
+  }
+
+  private register(){
+    if(this.beneForm.invalid){
+      this.mensaje='Faltan completar algunos campos'
+    }
+    else{
+      const nombreForm= this.beneForm.get('nombreOrg').value
+      const emailForm= this.beneForm.get('email').value
+      const passwordForm= this.beneForm.get('password').value
+      const direccionForm= this.beneForm.get('direccion').value
+      const numeroPersonasForm= this.beneForm.get('numeroPersonas').value
+  
+      this.beneficiarioService.create({nombre:nombreForm,email: emailForm,password: passwordForm,direccion: direccionForm,nroPersonas: numeroPersonasForm})
+    }
+
   }
 
 }

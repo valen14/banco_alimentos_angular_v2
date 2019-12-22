@@ -23,11 +23,15 @@ export class NewDonacionComponent implements OnInit {
   }
 
   onSubmit(){
+
+    this.cargarDonacion
+    this.router.navigateByUrl('donante')
+  }
+
+  private cargarDonacion(){
     const descripcionForm=this.donacionForm.get('descripcion').value
 
     this.donanteService.createBultos(new Bulto(descripcionForm))
-
-    this.router.navigateByUrl('login/donante/donaciones')
   }
 
 }
