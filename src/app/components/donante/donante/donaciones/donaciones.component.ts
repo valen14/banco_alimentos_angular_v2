@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrganizacionDonanteApi } from 'src/app/service/lbservice';
 
 @Component({
   selector: 'app-donaciones',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonacionesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private donanteService: OrganizacionDonanteApi) { 
+    const bultos=donanteService.getBultos({}) 
+  }
 
   ngOnInit() {
   }

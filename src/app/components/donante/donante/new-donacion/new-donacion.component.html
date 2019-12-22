@@ -1,1 +1,12 @@
 <p>new-donacion works!</p>
+
+<body class="text-center">
+    <h4>Donar</h4>
+    <form class="form-signin" (ngSubmit)="onSubmit()" [formGroup]="donacionForm">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Descripcion</label>
+        <input type="descripcion" id="inputEmail" class="form-control" placeholder="Descripcion" required autofocus formControlName="descripcion">
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Confirmar Donacion</button>
+    </form>
+</body>

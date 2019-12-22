@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { VoluntarioApi } from 'src/app/service/lbservice';
 
 @Component({
   selector: 'app-register-voluntario',
@@ -10,7 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class RegisterVoluntarioComponent implements OnInit {
 
   voluntarioForm: FormGroup
-  constructor(private router: Router) {
+  constructor(private router: Router,private voluntarioService: VoluntarioApi) {
     this.voluntarioForm= new FormGroup ({
       nombre: new FormControl(),
       dni: new FormControl(),
@@ -32,7 +33,7 @@ export class RegisterVoluntarioComponent implements OnInit {
     const emailForm= this.voluntarioForm.get('email').value
     const passwordForm= this.voluntarioForm.get('password').value
     const direccionForm= this.voluntarioForm.get('direccion').value
-    
+    this.voluntarioService.create({nombreForm,dniForm, emailForm, passwordForm, direccionForm})
     this.router.navigateByUrl('register/voluntario')
   }
 

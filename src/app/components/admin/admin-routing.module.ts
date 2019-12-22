@@ -19,6 +19,7 @@ import { AsignadosComponent } from './admin/envios/asignados/asignados.component
 import { NuevoEnvioComponent } from './admin/envios/nuevo-envio/nuevo-envio.component';
 import { SeleccionPaquetesComponent } from './admin/envios/nuevo-envio/seleccion-paquetes/seleccion-paquetes.component';
 import { SeleccionVoluntarioComponent } from './admin/envios/sin-asignar/seleccion-voluntario/seleccion-voluntario.component';
+import { PaquetesComponent } from './admin/paquetes/paquetes.component';
 
 
 const routes: Routes = [
@@ -49,6 +50,7 @@ const routes: Routes = [
       {path: 'seleccion-voluntarios', component: SeleccionVoluntarioComponent}
     ]
   },
+    {path: 'paquetes', component: PaquetesComponent}
 
     ]
   }
