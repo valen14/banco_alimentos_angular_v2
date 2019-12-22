@@ -10,7 +10,7 @@ const routes: Routes = [
   // {path: 'donante', loadChildren: () => import('../donante/donante.module').then(m => m.DonanteModule)},
   // {path: 'voluntario', loadChildren: () => import('../voluntario/voluntario.module').then(m => m.VoluntarioModule)},
   // {path: 'beneficiario', loadChildren: () => import('../beneficiario/beneficiario.module').then(m => m.BeneficiarioModule)},
-  {path: 'login/:type', component: LoginFormComponent, children:[
+  {path: ':type', component: LoginFormComponent, children:[
     
   ]},
 
