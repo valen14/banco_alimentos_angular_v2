@@ -12,6 +12,7 @@ export class RegisterBeneficiarioComponent implements OnInit {
 
   beneficiario: OrganizacionBeneficiaria
   beneForm: FormGroup
+  mensaje: string
   constructor(private router: Router, private beneficiarioService: OrganizacionBeneficiariaApi) {
     this.beneForm = new FormGroup({
       nombreOrg: new FormControl(),
