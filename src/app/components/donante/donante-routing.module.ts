@@ -11,11 +11,10 @@ import { InsignasComponent } from './donante/insignas/insignas.component';
 const routes: Routes = [
   {path: '', component: DonanteComponent,
   children:[
-    {path: 'donaciones', component: DonacionesComponent,
-  children:[
-    {path: 'new-donacion', component: NewDonacionComponent},
-  ]
-  },
+    {path: 'donaciones', component: DonacionesComponent},
+  
+    {path: 'donaciones/new-donacion', component: NewDonacionComponent},
+  
     {path: 'donaciones/:id', component: DonacionComponent},
     
     {path: 'insignas', component: InsignasComponent}

@@ -1,1 +1,14 @@
 <p>contact works!</p>
+
+<h2>{{header}}</h2>
+<p>{{description | uppercase}}</p>
+<p>You have 
+    <mark [class]="counterClass">{{numContacts}}</mark>
+    Contact rigth now
+</p>
+
+<input value="Show Form" type="button" (click)="formHidden = false" />
+<input value="Hide Form" type="button" (click)="formHidden = true" />
+<form [ngClass]="{ 'hidden' : formHidden }">
+  <fieldset><legend>Contact Form</legend></fieldset>
+</form>

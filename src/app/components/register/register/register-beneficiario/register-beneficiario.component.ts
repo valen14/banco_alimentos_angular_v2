@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { OrganizacionBeneficiariaApi, OrganizacionBeneficiaria } from 'src/app/service/lbservice';
 
 @Component({
   selector: 'app-register-beneficiario',
@@ -9,8 +10,9 @@ import { Router } from '@angular/router';
 })
 export class RegisterBeneficiarioComponent implements OnInit {
 
+  beneficiario: OrganizacionBeneficiaria
   beneForm: FormGroup
-  constructor(private router: Router) {
+  constructor(private router: Router, private beneficiarioService: OrganizacionBeneficiariaApi) {
     this.beneForm = new FormGroup ({
       nombreOrg: new FormControl(),
       email: new FormControl(),
@@ -32,7 +34,9 @@ export class RegisterBeneficiarioComponent implements OnInit {
     const direccionForm= this.beneForm.get('direccion').value
     const numeroPersonasForm= this.beneForm.get('numeroPersonas').value
 
-    this.router.navigateByUrl('register/beneficiario')
+    this.beneficiarioService.create({nombreForm, emailForm, passwordForm, direccionForm, numeroPersonasForm})
+
+    this.router.navigateByUrl('')
   }
 
 }

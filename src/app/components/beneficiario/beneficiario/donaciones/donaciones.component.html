@@ -6,9 +6,9 @@
         <ul class="list-group">
         <li class="list-group-item list-group-item-action" *ngFor="let do of donaciones; let id=index" >
             <div>
-                <span>Razon Social: {{do.razonSocial}}</span><br>
-                <span>CUIL: {{do.cuil}}</span><br>
-                <span>Direccion: {{do.direccion}}</span>
+                <span>Descripcion: {{do.descripcion}}</span><br>
+                <span>Peso: {{do.peso}}</span><br>
+                <span>Volumen: {{do.volumen}}</span>
             </div> 
             <div class="pull-right">
                 <button class="btn btn-primary btn-xs fa fa-eye" [routerLink]="[id]"></button>

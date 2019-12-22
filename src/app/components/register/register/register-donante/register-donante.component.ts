@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { OrganizacionDonanteApi } from 'src/app/service/lbservice';
 
 @Component({
   selector: 'app-register-donante',
@@ -10,7 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class RegisterDonanteComponent implements OnInit {
 
   donanteForm: FormGroup
-  constructor(private router: Router) {
+  constructor(private router: Router, private donanteService: OrganizacionDonanteApi) {
     this.donanteForm= new FormGroup ({
       razonSocial: new FormControl(),
       cuil: new FormControl(),
@@ -32,7 +33,7 @@ export class RegisterDonanteComponent implements OnInit {
     const emailForm= this.donanteForm.get('email').value
     const passwordForm= this.donanteForm.get('password').value
     const direccionForm= this.donanteForm.get('direccion').value
-    
-    this.router.navigateByUrl('register/donante')
+    this.donanteService.create({razonSocialForm,cuilForm, emailForm, passwordForm, direccionForm})
+    this.router.navigateByUrl('')
   }
 }

@@ -7,6 +7,7 @@ import { InsignasComponent } from './donante/insignas/insignas.component';
 import { DonacionesComponent } from './donante/donaciones/donaciones.component';
 import { DonacionComponent } from './donante/donaciones/donacion/donacion.component';
 import { NewDonacionComponent } from './donante/donaciones/new-donacion/new-donacion.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,9 @@ import { NewDonacionComponent } from './donante/donaciones/new-donacion/new-dona
   declarations: [DonanteComponent, InsignasComponent, DonacionesComponent, DonacionComponent, NewDonacionComponent,],
   imports: [
     CommonModule,
-    DonanteRoutingModule
+    DonanteRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DonanteModule { }
