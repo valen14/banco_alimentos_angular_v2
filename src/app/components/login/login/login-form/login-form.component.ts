@@ -20,6 +20,7 @@ export class LoginFormComponent implements OnInit {
   constructor(
     ar: ActivatedRoute,
     private router: Router,
+    private authService : AuthService,
     private voluntarioService: VoluntarioApi,
     private donanteService: OrganizacionDonanteApi,
     private beneficiarioService: OrganizacionBeneficiariaApi) {
@@ -43,24 +44,33 @@ export class LoginFormComponent implements OnInit {
 
   login() {
     if (this.loginForm.invalid) {
+      this.message = "Falta completar algunos campos"
       return;
     } else {
-      this.voluntarioService.find({
-        "where": {
-          "email": this.formControls.email.value,
-          "password": this.formControls.password.value
-        }
-      }).subscribe((voluntarios) => {
-        console.log(voluntarios)
-        if (voluntarios.length > 0) {
-          sessionStorage.setItem('isLoggedIn', 'true')
-          sessionStorage.setItem('type', this.type)
-          sessionStorage.setItem('email', this.formControls.email.value)
-          this.router.navigateByUrl('/login/' + this.type)
-        } else {
-          this.message = "El email o password ingresado no coincide con ningun usuario"
-        }
-      })
+      switch (this.type) {
+        case 'voluntario':
+          this.voluntarioService.find({
+            "where": {
+              "email": this.formControls.email.value,
+              "password": this.formControls.password.value
+            }
+          }).subscribe((voluntarios) => {
+            console.log(voluntarios)
+            if (voluntarios.length > 0) {
+              this.authService.login(this.type, this.formControls.email.value)
+              this.router.navigateByUrl('/login/' + this.type)
+            } else {
+              this.message = "El email o password ingresado no coincide con ningun usuario"
+            }
+          })
+          break;
+        case 'beneficiario':
+          //
+          break;
+        case 'donante':
+          //
+          break;
+      }
     }
   }
 }

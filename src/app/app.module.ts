@@ -9,7 +9,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EditOrganizacionDonanteComponent } from './edit-organizacion-donante/edit-organizacion-donante.component';
 import { CoreModule } from './components/core/core.module';
 import { SDKBrowserModule } from './service/lbservice';
-import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard'; 
 import { VoluntarioAuthGuard } from './guards/voluntario-auth.guard';
@@ -22,7 +21,6 @@ import { DonanteAuthGuard } from './guards/donante-auth.guard';
     OrganizacionDonanteComponent,
     NewOrganizacionDonanteComponent,
     EditOrganizacionDonanteComponent,
-    LoginComponent,
     DashboardComponent,
   ],
   imports: [
