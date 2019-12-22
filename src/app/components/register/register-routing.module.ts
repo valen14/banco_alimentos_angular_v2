@@ -7,13 +7,13 @@ import { RegisterDonanteComponent } from './register/register-donante/register-d
 
 
 const routes: Routes = [
-  {path: '', component: RegisterComponent},
-  {path: 'register-voluntario', component: RegisterVoluntarioComponent},
-  { path: 'voluntario', loadChildren: () => import('../voluntario/voluntario.module').then(m => m.VoluntarioModule)},
-  {path: 'register-donante', component: RegisterDonanteComponent},
-  { path: 'donante', loadChildren: () => import('../donante/donante.module').then(m => m.DonanteModule)},
-  {path: 'register-beneficiario', component: RegisterBeneficiarioComponent},
-  { path: 'beneficiario', loadChildren: () => import('../beneficiario/beneficiario.module').then(m => m.BeneficiarioModule)},
+  { path: '', component: RegisterComponent },
+  { path: 'register-voluntario', component: RegisterVoluntarioComponent },
+  { path: 'voluntario', loadChildren: () => import('../voluntario/voluntario.module').then(m => m.VoluntarioModule) },
+  { path: 'register-donante', component: RegisterDonanteComponent },
+  { path: 'donante', loadChildren: () => import('../donante/donante.module').then(m => m.DonanteModule) },
+  { path: 'register-beneficiario', component: RegisterBeneficiarioComponent },
+  { path: 'beneficiario', loadChildren: () => import('../beneficiario/beneficiario.module').then(m => m.BeneficiarioModule) },
 
 ];
 
