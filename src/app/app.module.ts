@@ -12,6 +12,9 @@ import { SDKBrowserModule } from './service/lbservice';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard'; 
+import { VoluntarioAuthGuard } from './guards/voluntario-auth.guard';
+import { BeneficiarioAuthGuard } from './guards/beneficiario-auth.guard';
+import { DonanteAuthGuard } from './guards/donante-auth.guard';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { AuthGuard } from './guards/auth.guard';
   ],
   providers: [
     AuthGuard,
+    VoluntarioAuthGuard,
+    BeneficiarioAuthGuard,
+    DonanteAuthGuard,
   ],
   bootstrap: [AppComponent]
 })

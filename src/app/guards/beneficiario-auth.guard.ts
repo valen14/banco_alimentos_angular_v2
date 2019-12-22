@@ -5,29 +5,27 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-
-export class AuthGuard implements CanActivate {
+export class BeneficiarioAuthGuard implements CanActivate {
 
   constructor(private router: Router) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    if (this.isLoggedIn()) {
+    if (this.isLoggedBeneficiario()) {
       return true;
     }
     this.router.navigate(['/login']);
     return false;
   }
 
-  public isLoggedIn(): boolean {
-    let status = false;
+  isLoggedBeneficiario() {
     if (sessionStorage.getItem('isLoggedIn') == "true") {
-      status = true;
+      if(sessionStorage.getItem('type') == 'benenficiario') {
+        return true
+      }
     }
-    else {
-      status = false;
-    }
-    return status;
+    return false
   }
+  
 }
