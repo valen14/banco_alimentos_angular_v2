@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './components/core/not-found/not-found.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -11,7 +12,7 @@ const routes: Routes = [
   { path: 'about', loadChildren: () => import('./components/about/about.module').then(m => m.AboutModule)},
   { path: 'register', loadChildren: () => import('./components/register/register.module').then(m => m.RegisterModule)},
   { path: 'login', loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule)},
-  { path: 'contact', loadChildren: () => import('./components/contact/contact.module').then(m => m.ContactModule)},
+  { path: 'contact', loadChildren: () => import('./components/contact/contact.module').then(m => m.ContactModule) },
   
   //estatico
   { path: '**', redirectTo: '/notFound', pathMatch: 'full'},

@@ -18,11 +18,13 @@ export class AuthGuard implements CanActivate {
     if (this.isLoggedIn()) {
       return true;
     }
+    this.router.navigate(['/login']);
+    return false;
   }
 
   public isLoggedIn(): boolean {
     let status = false;
-    if (localStorage.getItem('isLoggedIn') == "true") {
+    if (sessionStorage.getItem('isLoggedIn') == "true") {
       status = true;
     }
     else {
