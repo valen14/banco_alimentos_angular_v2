@@ -1,23 +1,33 @@
 <div class="container">
-    <div class="row">
-        <div class="card" style="margin: 15px;">
-            <div class="card-header">
-                Administrar Donaciones
+    <router-outlet>
+    </router-outlet>
+        <div class="row">
+            <div class="card col-sm-6">
+                <div class="card-header">
+                    Nueva Donaciones
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Carga una nueva donacion a realizar</p>
+                    <a routerLink='donaciones' class="btn btn-primary">Cargar nueva</a>
+                </div>
             </div>
-            <div class="card-body">
-                <p class="card-text">Carga una nueva donacion o vea el listado de sus donaciones realizadas</p>
-                <a routerLink='donaciones' class="btn btn-primary">Ir a Donaciones</a>
+            <div class="card col-sm-6">
+                <div class="card-header">
+                    Ver mis Donaciones
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Vea el listado de sus donaciones realizadas</p>
+                    <a routerLink='new-donacion' class="btn btn-primary">Ir a Donaciones</a>
+                </div>
+            </div>
+            <div class="card col-sm-6">
+                <div class="card-header">
+                    Ver Mis Insignias
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Ver el listado de mis insignias actuales (Por hacer)</p>
+                    <a routerLink='insignias' class="btn btn-primary">Ir a Insignias</a>
+                </div>
             </div>
         </div>
-        <div class="card" style="margin: 15px;">
-            <div class="card-header">
-                Ver Mis Insignias
-            </div>
-            <div class="card-body">
-                <p class="card-text">Ver el listado de mis insignias actuales (Por hacer)</p>
-                <a routerLink='insignias' class="btn btn-primary">Ir a Insignias</a>
-            </div>
-        </div>
-    </div>
 </div>
-<router-outlet></router-outlet>
