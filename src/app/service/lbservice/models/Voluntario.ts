@@ -24,6 +24,7 @@ export interface VoluntarioInterface {
   "bultoId"?: any;
   "envioId"?: any;
   "insigniaOtorgadaVoluntarioId"?: any;
+  "asignacionTrasladoBultoId"?: any;
   vehiculos?: Vehiculo;
   categoriaVoluntarios?: CategoriaVoluntario;
   bultos?: Bulto[];
@@ -46,6 +47,7 @@ export class Voluntario implements VoluntarioInterface {
   "bultoId": any;
   "envioId": any;
   "insigniaOtorgadaVoluntarioId": any;
+  "asignacionTrasladoBultoId": any;
   vehiculos: Vehiculo;
   categoriaVoluntarios: CategoriaVoluntario;
   bultos: Bulto[];
@@ -135,6 +137,10 @@ export class Voluntario implements VoluntarioInterface {
         },
         "insigniaOtorgadaVoluntarioId": {
           name: 'insigniaOtorgadaVoluntarioId',
+          type: 'any'
+        },
+        "asignacionTrasladoBultoId": {
+          name: 'asignacionTrasladoBultoId',
           type: 'any'
         },
       },
