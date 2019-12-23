@@ -16,5 +16,6 @@ export * from './InsigniaOtorgadaVoluntario';
 export * from './InsigniaOtorgadaOrgDonante';
 export * from './Contacto';
 export * from './AsignacionEnvio';
+export * from './AsignacionTrasladoBulto';
 export * from './BaseModels';
 export * from './FireLoopRef';

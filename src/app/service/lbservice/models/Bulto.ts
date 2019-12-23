@@ -17,6 +17,7 @@ export interface BultoInterface {
   "voluntarioId"?: any;
   "organizacionDonanteId"?: any;
   "bultoProductoPaqueteId"?: any;
+  "asignacionTrasladoBultoId"?: any;
   voluntarios?: Voluntario;
   organizacionDonantes?: OrganizacionDonante;
   bultoProductoPaquetes?: BultoProductoPaquete[];
@@ -33,6 +34,7 @@ export class Bulto implements BultoInterface {
   "voluntarioId": any;
   "organizacionDonanteId": any;
   "bultoProductoPaqueteId": any;
+  "asignacionTrasladoBultoId": any;
   voluntarios: Voluntario;
   organizacionDonantes: OrganizacionDonante;
   bultoProductoPaquetes: BultoProductoPaquete[];
@@ -107,6 +109,10 @@ export class Bulto implements BultoInterface {
         },
         "bultoProductoPaqueteId": {
           name: 'bultoProductoPaqueteId',
+          type: 'any'
+        },
+        "asignacionTrasladoBultoId": {
+          name: 'asignacionTrasladoBultoId',
           type: 'any'
         },
       },

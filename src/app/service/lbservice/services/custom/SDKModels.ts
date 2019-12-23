@@ -17,6 +17,7 @@ import { InsigniaOtorgadaVoluntario } from '../../models/InsigniaOtorgadaVolunta
 import { InsigniaOtorgadaOrgDonante } from '../../models/InsigniaOtorgadaOrgDonante';
 import { Contacto } from '../../models/Contacto';
 import { AsignacionEnvio } from '../../models/AsignacionEnvio';
+import { AsignacionTrasladoBulto } from '../../models/AsignacionTrasladoBulto';
 
 export interface Models { [name: string]: any }
 
@@ -41,6 +42,7 @@ export class SDKModels {
     InsigniaOtorgadaOrgDonante: InsigniaOtorgadaOrgDonante,
     Contacto: Contacto,
     AsignacionEnvio: AsignacionEnvio,
+    AsignacionTrasladoBulto: AsignacionTrasladoBulto,
     
   };
 
