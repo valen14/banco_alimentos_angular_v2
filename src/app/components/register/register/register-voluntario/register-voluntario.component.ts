@@ -45,7 +45,7 @@ export class RegisterVoluntarioComponent implements OnInit {
     }
     console.log(voluntario)
     this.voluntarioService.create(voluntario).subscribe(() => {
-      this.router.navigateByUrl('/home')
+      this.router.navigateByUrl('')
     })
   }
 
