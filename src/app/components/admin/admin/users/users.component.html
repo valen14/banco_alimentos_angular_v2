@@ -1,11 +1,28 @@
-<p>users works!</p>
-
-
-
-    <a routerLink="donantes" class="button"> <span> Organizaciones Donantes</span> </a>
-    <a routerLink="voluntarios" class="button"> <span> Voluntarios</span> </a>
-    <a routerLink="beneficiarios" class="button"> <span> Organizaciones Beneficiarias</span> </a>
-    
-
+<table class="table">
+    <caption>Lista de {{userTypeToList}}</caption>
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col" *ngIf="userTypeToList == 'voluntarios'">DNI</th>
+        <th scope="col" *ngIf="userTypeToList == 'donantes'">CUIL</th>
+        <th scope="col">Email</th>
+        <th scope="col" *ngIf="userTypeToList == 'voluntarios'" >Nro. Telefono</th>
+        <th scope="col">Direccion</th>
+        <th scope="col" *ngIf="userTypeToList == 'beneficiarios'" >Nro. Personas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th *ngIf="userTypeToList !== 'donantes'">{{user.nombre}}</th>
+        <th *ngIf="userTypeToList == 'donantes'">{{user.razon_social}}</th>
+        <td *ngIf="userTypeToList == 'voluntarios'">{{user.dni}}</td>
+        <td *ngIf="userTypeToList == 'donantes'">{{user.cuil}}</td>
+        <td>{{user.email}}</td>
+        <td *ngIf="userTypeToList == 'voluntarios'">{{user.nro_telefono_celular}}</td>
+        <td>{{user.direccion}}</td>
+        <td *ngIf="userTypeToList == 'beneficiarios'">{{user.nro_personas}}</td>
+      </tr>
+    </tbody>
+  </table>
 
 <router-outlet></router-outlet>
