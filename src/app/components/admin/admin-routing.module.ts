@@ -24,33 +24,35 @@ import { PaquetesComponent } from './admin/paquetes/paquetes.component';
 
 const routes: Routes = [
   {
-  path: '', component: AdminComponent,
-  children: [
-    {path: 'users', component: UsersComponent,
-      children:[
-        {path: 'beneficiarios', component: BeneficiariosComponent},
-        {path: 'donantes', component: DonantesComponent},
-        {path: 'voluntarios', component: VoluntariosComponent},
-        {path: 'beneficiarios/:id', component: BeneficiarioComponent},
-        {path: 'donantes/:id', component: DonanteComponent},
-        {path: 'voluntarios/:id', component: VoluntarioComponent}
-      ]
-    },
-    {path: 'cars', component: CarsComponent},
-    {path: 'cars/:id', component: CarComponent},
-    {path: 'bultos', component: BultosComponent},
-    {path: 'bultos/:id', component: BultoComponent},
-    {path: 'envios', component: EnviosComponent,
+    path: '', component: AdminComponent,
     children: [
-      {path: 'sin-asignar',component: SinAsignarComponent},
-      {path: 'asignados',component: AsignadosComponent},
-      {path: 'envios/:id', component: EnvioComponent},
-      {path: 'nuevo-envio', component: NuevoEnvioComponent},
-      {path: 'seleccion-paquetes',component: SeleccionPaquetesComponent},
-      {path: 'seleccion-voluntarios', component: SeleccionVoluntarioComponent}
-    ]
-  },
-    {path: 'paquetes', component: PaquetesComponent}
+      {
+        path: 'users/:userType', component: UsersComponent,
+        children:[
+          // {path: 'beneficiarios', component: BeneficiariosComponent},
+          // {path: 'donantes', component: DonantesComponent},
+          // {path: 'voluntarios', component: VoluntariosComponent},
+          // {path: 'beneficiarios/:id', component: BeneficiarioComponent},
+          // {path: 'donantes/:id', component: DonanteComponent},
+          // {path: 'voluntarios/:id', component: VoluntarioComponent}
+        ]
+      },
+    { path: 'cars', component: CarsComponent },
+      { path: 'cars/:id', component: CarComponent },
+      { path: 'bultos', component: BultosComponent },
+      { path: 'bultos/:id', component: BultoComponent },
+      {
+        path: 'envios', component: EnviosComponent,
+        children: [
+          { path: 'sin-asignar', component: SinAsignarComponent },
+          { path: 'asignados', component: AsignadosComponent },
+          { path: 'envios/:id', component: EnvioComponent },
+          { path: 'nuevo-envio', component: NuevoEnvioComponent },
+          { path: 'seleccion-paquetes', component: SeleccionPaquetesComponent },
+          { path: 'seleccion-voluntarios', component: SeleccionVoluntarioComponent }
+        ]
+      },
+      { path: 'paquetes', component: PaquetesComponent }
 
     ]
   }
