@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './admin/users/users.component';
 import { BultosComponent } from './admin/bultos/bultos.component';
-import { BultoComponent } from './admin/bultos/bulto/bulto.component';
 import { EnviosComponent } from './admin/envios/envios.component';
 import { EnvioComponent } from './admin/envios/envio/envio.component';
 import { CarsComponent } from './admin/cars/cars.component';
@@ -23,8 +22,7 @@ const routes: Routes = [
       { path: 'users/:userType', component: UsersComponent},
       { path: 'cars', component: CarsComponent },
       { path: 'cars/:id', component: CarComponent },
-      { path: 'bultos', component: BultosComponent },
-      { path: 'bultos/:id', component: BultoComponent },
+      { path: 'bultos/:filter', component: BultosComponent },
       {
         path: 'envios', component: EnviosComponent,
         children: [

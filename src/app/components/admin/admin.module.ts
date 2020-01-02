@@ -5,7 +5,6 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './admin/users/users.component';
 import { BultosComponent } from './admin/bultos/bultos.component';
-import { BultoComponent } from './admin/bultos/bulto/bulto.component';
 import { EnviosComponent } from './admin/envios/envios.component';
 import { EnvioComponent } from './admin/envios/envio/envio.component';
 import { CarsComponent } from './admin/cars/cars.component';
@@ -20,7 +19,7 @@ import { NuevoEnvioComponent } from './admin/envios/nuevo-envio/nuevo-envio.comp
 
 
 @NgModule({
-  declarations: [AdminComponent,  UsersComponent,  BultosComponent, BultoComponent, EnviosComponent, EnvioComponent, CarsComponent, CarComponent, PaquetesComponent, SeleccionPaquetesComponent, SeleccionVoluntarioComponent, SinAsignarComponent, AsignadosComponent,NuevoEnvioComponent],
+  declarations: [AdminComponent,  UsersComponent,  BultosComponent,  EnviosComponent, EnvioComponent, CarsComponent, CarComponent, PaquetesComponent, SeleccionPaquetesComponent, SeleccionVoluntarioComponent, SinAsignarComponent, AsignadosComponent,NuevoEnvioComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
