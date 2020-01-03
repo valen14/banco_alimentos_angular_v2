@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrganizacionDonanteApi } from 'src/app/service/lbservice';
+import { OrganizacionDonanteApi, Bulto, OrganizacionDonante } from 'src/app/service/lbservice';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-donaciones',
@@ -8,11 +9,24 @@ import { OrganizacionDonanteApi } from 'src/app/service/lbservice';
 })
 export class DonacionesComponent implements OnInit {
 
-  constructor(private donanteService: OrganizacionDonanteApi) { 
-    const bultos=donanteService.getBultos({}) 
+  bultos: Bulto[]
+  emailUserLog
+
+  constructor(private auth: AuthService, private donanteService: OrganizacionDonanteApi) { 
+    this.emailUserLog= sessionStorage.getItem('email')
   }
 
   ngOnInit() {
+    this.donanteService.findOne({where:{email: this.emailUserLog}}).subscribe((donante) => {
+      console.log(donante)
+      this.donanteService.getBultos(donante['id']).subscribe((bultos) => {
+        console.log(bultos),
+        this.bultos = bultos
+       })
+    })
+ 
+
+
   }
 
 }
