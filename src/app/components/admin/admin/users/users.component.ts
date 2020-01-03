@@ -21,12 +21,12 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.userTypeToList = this.ar.snapshot.params['userType']
-    this.ar.paramMap.subscribe((params) => { 
+    this.ar.paramMap.subscribe((params) => {
       this.userTypeToList = params.get('userType')
       this.cargarTabla()
     })
   }
-  
+
   cargarTabla() {
     switch (this.userTypeToList) {
       case 'donantes':

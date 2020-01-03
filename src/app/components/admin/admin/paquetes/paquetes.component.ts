@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PaqueteApi } from 'src/app/service/lbservice';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-paquetes',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaquetesComponent implements OnInit {
 
-  constructor() { }
+  paquetes = []
+
+  constructor(private ar: ActivatedRoute,
+    private router: Router,
+    private paqueteService: PaqueteApi) { }
 
   ngOnInit() {
   }
