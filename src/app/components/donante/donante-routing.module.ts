@@ -4,6 +4,7 @@ import { DonanteComponent } from './donante/donante.component';
 import { DonacionesComponent } from './donante/donaciones/donaciones.component';
 import { NewDonacionComponent } from './donante/new-donacion/new-donacion.component';
 import { InsignasComponent } from './donante/insignas/insignas.component';
+import { EditDonacionComponent } from './donante/edit-donacion/edit-donacion.component';
 
 
 
@@ -13,7 +14,8 @@ const routes: Routes = [
    
       { path: 'donaciones', component: DonacionesComponent },
       { path: 'new-donacion', component: NewDonacionComponent },
-      { path: 'insignas', component: InsignasComponent }
+      { path: 'edit-donacion/:idx', component: EditDonacionComponent},
+      { path: 'insignas', component: InsignasComponent },
    
   
 ];

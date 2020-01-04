@@ -11,13 +11,12 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NewDonacionComponent implements OnInit {
 
-  
   donacionForm:FormGroup
-  emailUserLog 
-  
+  idUserLog 
 
   constructor(private auth:AuthService, private donanteService:OrganizacionDonanteApi, private  router: Router) { 
-    this.emailUserLog= sessionStorage.getItem('email')
+    const emailUserLog= sessionStorage.getItem('email')
+    this.obtenerIdUsuarioLoguedo(emailUserLog)
     this.donacionForm=new FormGroup({
       descripcion: new FormControl(),
       ancho: new FormControl(),
@@ -29,7 +28,14 @@ export class NewDonacionComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.emailUserLog)
+    
+  }
+
+  private obtenerIdUsuarioLoguedo(email: string){
+    this.donanteService.findOne({where:{email: email}}).subscribe((user) => {
+      console.log(user)
+      this.idUserLog=user['id']
+    })
   }
 
   onSubmit(){
@@ -39,35 +45,30 @@ export class NewDonacionComponent implements OnInit {
   }
 
   private cargarDonacion(){
+    const donacion=this.crearDonacion()
+    console.log(donacion)
+    this.donanteService.getBultos(this.idUserLog).subscribe((bultos)=>{
+      bultos.push(donacion)
+      console.log(bultos)
+      this.donanteService.createBultos(this.idUserLog,bultos).subscribe(() => {
+        this.router.navigateByUrl('/donante')
+      } )    
+    })
+  }
+
+  private crearDonacion(){
     const descripcionForm=this.donacionForm.get('descripcion').value
     const anchoForm= this.donacionForm.get('ancho').value
     const largoForm= this.donacionForm.get('largo').value
     const fechaDisponibilidadForm=this.donacionForm.get('fecha_disponibilidad').value
     const fechaVencimientoForm=this.donacionForm.get('fecha_vencimiento').value
-    const donacion = {
+    return {
       descripcion: descripcionForm,
       volumen: [anchoForm,largoForm],
       fecha_disponibilidad: new Date(),
       revisado: false,
       fecha_vencimiento: new Date(),
       estado: "pendiente de retiro",
-
     }
-    console.log(donacion)
-    
-    this.donanteService.findOne({"where": {"email": this.emailUserLog}}).subscribe((donante) => {
-      console.log(donante)
-      this.donanteService.getBultos(donante['id']).subscribe((bultos)=>{
-        bultos.push(donacion)
-        console.log(bultos)
-        this.donanteService.createBultos(donante['id'],bultos).subscribe(() => {
-          this.router.navigateByUrl('/donante')
-        } )    
-      })
-
-    })
-
-
   }
-
 }

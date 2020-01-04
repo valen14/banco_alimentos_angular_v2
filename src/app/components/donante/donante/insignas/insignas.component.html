@@ -1,1 +1,15 @@
-<p>insignas works!</p>
+<div class="content">
+    <!-- LISTADO DONACIONES -->
+    <div class="row justify-content-md-center">
+        <ul class="list-group">
+        <li class="list-group-item list-group-item-action" *ngFor="let insigna of insignas; let idx=index" >
+            <div>
+                <span>Nombre: {{insigna.nombre}}</span><br>
+                <span>Descripcion: {{insigna.descripcion}}</span><br>
+            </div> 
+
+        </li>
+        </ul>
+    </div>
+
+</div>

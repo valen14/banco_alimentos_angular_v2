@@ -1,0 +1,31 @@
+<body class="text-center">
+    <h4>Editar donacion</h4>
+    <form (ngSubmit)="onSubmit()" [formGroup]="donacionForm">
+        <div class="form-group">
+            <label for="ogRazonSocial">Descripcion:</label>
+            <input type="text" formControlName="descripcion" class="form-control" required autofocus>
+        </div>
+        <div class="form-group">
+            <label for="ogRazonSocial">Volumen:</label>
+            <tr for="ogRazonSocial">
+                <label >Ancho:</label>
+                <input type="number" formControlName="ancho" class="form-control" required autofocus>
+                <label >Largo:</label>
+                <input type="number" formControlName="largo" class="form-control" required autofocus>
+            </tr>
+        </div>
+        <div class="form-group">
+            <label for="ogRazonSocial">fecha_disponibilidad:</label>
+            <input type="text" formControlName="fecha_disponibilidad" class="form-control" required autofocus>
+        </div>
+        <div class="form-group">
+            <label for="ogRazonSocial">fecha_vencimiento:</label>
+            <input type="text" formControlName="fecha_vencimiento" class="form-control" required autofocus>
+        </div>
+         
+         <div class="form-group">
+            <button class="btn btn-primary" type="submit">Guardar</button>
+            <a routerLink="/donante/donaciones" class="btn btn-link">Cancelar</a>
+        </div>
+    </form>
+</body>
