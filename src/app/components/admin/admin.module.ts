@@ -16,10 +16,11 @@ import { SinAsignarComponent } from './admin/envios/sin-asignar/sin-asignar.comp
 import { AsignadosComponent } from './admin/envios/asignados/asignados.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NuevoEnvioComponent } from './admin/envios/nuevo-envio/nuevo-envio.component';
+import { CargaPaquetesComponent } from './admin/carga-paquetes/carga-paquetes.component';
 
 
 @NgModule({
-  declarations: [AdminComponent,  UsersComponent,  BultosComponent,  EnviosComponent, EnvioComponent, CarsComponent, CarComponent, PaquetesComponent, SeleccionPaquetesComponent, SeleccionVoluntarioComponent, SinAsignarComponent, AsignadosComponent,NuevoEnvioComponent],
+  declarations: [AdminComponent,  UsersComponent,  BultosComponent,  EnviosComponent, EnvioComponent, CarsComponent, CarComponent, PaquetesComponent, SeleccionPaquetesComponent, SeleccionVoluntarioComponent, SinAsignarComponent, AsignadosComponent,NuevoEnvioComponent, CargaPaquetesComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
