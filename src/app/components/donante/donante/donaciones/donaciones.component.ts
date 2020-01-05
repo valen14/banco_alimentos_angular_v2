@@ -33,8 +33,10 @@ export class DonacionesComponent implements OnInit {
   }
   public cancelarDonacion(bulto:Bulto){
     console.log(bulto)
+    if(bulto['estado']=='pendiente de retiro'){
       this.bultoService.deleteById(bulto['id']).subscribe(() => {
         this.obtenerBultos()
       })  
+    }
   }
 }
