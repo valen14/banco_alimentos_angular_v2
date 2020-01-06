@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductoApi, PaqueteApi, BultoProductoPaqueteApi, Producto, Paquete, TipoDeAlimentoApi, TipoDeAlimento, BultoProductoPaquete } from 'src/app/service/lbservice';
+import { ProductoApi, PaqueteApi, BultoProductoPaqueteApi, Producto, Paquete, TipoDeAlimentoApi, TipoDeAlimento, BultoProductoPaquete, BultoApi, Bulto } from 'src/app/service/lbservice';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -24,7 +24,8 @@ export class CargaPaquetesComponent implements OnInit {
     private productoService: ProductoApi,
     private paqueteService: PaqueteApi,
     private bppService: BultoProductoPaqueteApi,
-    private tipoAlimentoService: TipoDeAlimentoApi) {
+    private tipoAlimentoService: TipoDeAlimentoApi,
+    private bultoService: BultoApi) {
     this.crearBPPForm = new FormGroup({
       producto: new FormControl(),
       cantidad: new FormControl(),
@@ -105,12 +106,19 @@ export class CargaPaquetesComponent implements OnInit {
       this.contenidoPaquete.forEach((bpp) => {
         this.bppService.create({ ...bpp, paqueteId: paq.id, productoNombre: undefined }).subscribe((a) => console.log(a))
       })
+      this.contenidoPaquete = []
     })
     this.crearPaqueteForm.reset()
   }
 
   terminarCarga() {
-    alert("La carga termino - Implementar")
+    this.bultoService.findById<Bulto>(this.idBulto).subscribe((b) => {
+      this.bultoService.updateAttributes(this.idBulto, {
+        ...b,
+        estado: 'cargado',
+        revisado:true
+      }).subscribe((b) => this.router.navigateByUrl('/admin'))
+    })
   }
 
   onSubmitCrearProducto() {
@@ -123,6 +131,12 @@ export class CargaPaquetesComponent implements OnInit {
       this.productos.push(prod)
     })
     this.crearProductoForm.reset()
+  }
+
+  eliminarPaquete(paquete) {
+    // console.log
+    this.paqueteService.deleteById(paquete.id).subscribe(() => this.paquetes.splice(this.paquetes.indexOf(paquete)))
+
   }
 
 }
