@@ -5,7 +5,6 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './admin/users/users.component';
 import { BultosComponent } from './admin/bultos/bultos.component';
-import { BultoComponent } from './admin/bultos/bulto/bulto.component';
 import { EnviosComponent } from './admin/envios/envios.component';
 import { EnvioComponent } from './admin/envios/envio/envio.component';
 import { CarsComponent } from './admin/cars/cars.component';
@@ -17,10 +16,11 @@ import { SinAsignarComponent } from './admin/envios/sin-asignar/sin-asignar.comp
 import { AsignadosComponent } from './admin/envios/asignados/asignados.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NuevoEnvioComponent } from './admin/envios/nuevo-envio/nuevo-envio.component';
+import { CargaPaquetesComponent } from './admin/carga-paquetes/carga-paquetes.component';
 
 
 @NgModule({
-  declarations: [AdminComponent,  UsersComponent,  BultosComponent, BultoComponent, EnviosComponent, EnvioComponent, CarsComponent, CarComponent, PaquetesComponent, SeleccionPaquetesComponent, SeleccionVoluntarioComponent, SinAsignarComponent, AsignadosComponent,NuevoEnvioComponent],
+  declarations: [AdminComponent,  UsersComponent,  BultosComponent,  EnviosComponent, EnvioComponent, CarsComponent, CarComponent, PaquetesComponent, SeleccionPaquetesComponent, SeleccionVoluntarioComponent, SinAsignarComponent, AsignadosComponent,NuevoEnvioComponent, CargaPaquetesComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
