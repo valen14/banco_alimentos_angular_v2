@@ -36,7 +36,7 @@ const routes: Routes = [
           { path: 'seleccion-voluntarios', component: SeleccionVoluntarioComponent }
         ]
       },
-      { path: 'paquetes', component: PaquetesComponent }
+      { path: 'paquetes/:filter', component: PaquetesComponent }
 
     ]
   }

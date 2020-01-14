@@ -76,7 +76,7 @@ export class BultosComponent implements OnInit {
         })
         this.donantesService.find().subscribe((donantes) => {
           this.donantes=donantes;
-          //console.log(donantes)
+          console.log(donantes)
         })
         break;
     }
@@ -85,7 +85,6 @@ export class BultosComponent implements OnInit {
   obtenerDonante(bulto:Bulto){
     var razon_social
     this.donantes.forEach((donante) => {
-      console.log(donante)
       if(donante.id == bulto.organizacionDonanteId)
         razon_social= donante.razon_social
     })
