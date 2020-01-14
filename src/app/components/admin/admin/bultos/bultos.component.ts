@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BultoApi, OrganizacionDonanteApi, Bulto, OrganizacionDonante, LoopBackFilter } from 'src/app/service/lbservice';
+import { elementAt } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bultos',
@@ -11,11 +12,14 @@ export class BultosComponent implements OnInit {
 
   filter: String
   bultos = []
+  donantes = []
 
   constructor(private ar: ActivatedRoute,
     private router: Router,
     private bultosService: BultoApi,
-    private donantesService: OrganizacionDonanteApi) { }
+    private donantesService: OrganizacionDonanteApi) { 
+     
+    }
 
   ngOnInit() {
     this.filter = this.ar.snapshot.params['filter']
@@ -70,12 +74,26 @@ export class BultosComponent implements OnInit {
           this.bultos = bultos;
           console.log(bultos)
         })
+        this.donantesService.find().subscribe((donantes) => {
+          this.donantes=donantes;
+          //console.log(donantes)
+        })
         break;
     }
   }
 
+  obtenerDonante(bulto:Bulto){
+    var razon_social
+    this.donantes.forEach((donante) => {
+      console.log(donante)
+      if(donante.id == bulto.organizacionDonanteId)
+        razon_social= donante.razon_social
+    })
+     return razon_social 
+  }
+
   confirmarTrasladoButtonClick() {
-    alert("A desarrollar")
+    alert("A desarrollar") 
   }
 
   cargarContenidoButtonClick(id) {

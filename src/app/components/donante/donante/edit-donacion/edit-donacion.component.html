@@ -3,7 +3,7 @@
     <form (ngSubmit)="onSubmit()" [formGroup]="donacionForm">
         <div class="form-group">
             <label for="ogRazonSocial">Descripcion:</label>
-            <input type="text" formControlName="descripcion" class="form-control" required autofocus>
+            <input type="string" formControlName="descripcion" class="form-control" required autofocus>
         </div>
         <div class="form-group">
             <label for="ogRazonSocial">Volumen:</label>

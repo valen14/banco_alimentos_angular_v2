@@ -2,6 +2,7 @@
   <caption>Bultos: {{filter}}</caption>
   <thead>
     <tr>
+      <th scope="col">Donante</th>
       <th scope="col">Descripcion</th>
       <th scope="col">Fecha de Disponibilidad</th>
       <th scope="col">Fecha de Vencimiento</th>
@@ -11,6 +12,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let bulto of bultos">
+      <th>{{obtenerDonante(bulto)}}</th>
       <th>{{bulto.descripcion}}</th>
       <th>{{bulto.fecha_disponibilidad}}</th>
       <th>{{bulto.fecha_vencimiento}}</th>

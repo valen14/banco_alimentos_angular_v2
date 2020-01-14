@@ -104,7 +104,7 @@ export class CargaPaquetesComponent implements OnInit {
     this.paqueteService.create(paquete).subscribe((paq) => {
       this.paquetes.push(paq)
       this.contenidoPaquete.forEach((bpp) => {
-        this.bppService.create({ ...bpp, paqueteId: paq.id, productoNombre: undefined }).subscribe((a) => console.log(a))
+        this.bppService.create({ ...bpp, paqueteId: paq["id"], productoNombre: undefined }).subscribe((a) => console.log(a))
       })
       this.contenidoPaquete = []
     })
@@ -128,7 +128,8 @@ export class CargaPaquetesComponent implements OnInit {
       codigo_barra: this.getFormCrearProductoControls().codigoBarra.value
     }
     this.productoService.create(productoNuevo).subscribe((prod) => {
-      this.productos.push(prod)
+      console.log(prod)
+      //this.productos.push(prod)
     })
     this.crearProductoForm.reset()
   }
