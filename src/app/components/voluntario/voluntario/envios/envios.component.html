@@ -1,8 +1,34 @@
-<p>envios works!</p>
-
-<header class="sticky">
-    <a routerLink="solicitudes" class="button"> <span> Solicitudes</span> </a>
-    <a routerLink="aceptados" class="button"> <span> Aceptados</span> </a>
-    <a routerLink="rechazados" class="button"> <span> Rechazados</span> </a>
-</header>
-<router-outlet></router-outlet>
+<h4>Envios: {{filter}}</h4>
+<table class="table">
+    <!--<caption>Envios: {{filter}}</caption>-->
+    <thead>
+      <tr>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Peso</th>
+        <th scope="col">Volumen</th>
+        <th scope="col">Fecha Maxima de Traslado</th>
+        <th scope="col">Fecha de Traslado</th>
+        <th scope="col">Comentario de Traslado</th>
+        <!--<th scope="col">Estado</th> -->
+        <th scope="col">Organizacion Beneficiaria</th>      
+        <th scope="col" >Acciones:</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let envio of envios">
+        <th>{{envio.descripcion}}</th>
+        <th>{{envio.peso}}</th>
+        <th>{{envio.volumen[0] && envio.volumen[1]}}</th>
+        <th>{{envio.fecha_maxima}}</th>
+        <th>{{envio.fecha_traslado}}</th>
+        <th>{{envio.comentario_traslado}}</th>
+        <!--<th>{{envio.estado}}</th>
+        <th *ngIf="filter == 'sin-asignar'">
+          <button class="btn btn-info btn-small" (click)="verEnvioButtonClick(envio.id)">Asignar traslado</button>
+        </th>
+        <th *ngIf="filter !== 'sin-asignar'">
+           {{obtenerOrganizacionBeneficiaria(envio)}}
+        </th> -->
+      </tr>
+    </tbody>
+  </table>

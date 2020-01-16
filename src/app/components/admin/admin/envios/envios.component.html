@@ -21,7 +21,7 @@
         <th>{{envio.fecha_maxima}}</th>
         <th>{{envio.fecha_traslado}}</th>
         <th>{{envio.comentario_traslado}}</th>
-        <th>{{bulto.estado}}</th>
+        <th>{{envio.estado}}</th>
         <th *ngIf="filter == 'sin-asignar'">
           <button class="btn btn-info btn-small" (click)="asignarTrasladoButtonClick(envio.id)">Asignar traslado</button>
         </th>
