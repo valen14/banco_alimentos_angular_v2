@@ -8,8 +8,8 @@ import { DonacionComponent } from './beneficiario/donaciones/donacion/donacion.c
 const routes: Routes = [
   {path: '', component: BeneficiarioComponent,
   children:[
-    {path: 'donaciones', component: DonacionesComponent},
-    {path: 'donaciones/:id', component: DonacionComponent},
+    {path: 'donaciones/:filter', component: DonacionesComponent},
+    {path: 'donaciones/:id/ver', component: DonacionComponent},
   ]
 }
 ];

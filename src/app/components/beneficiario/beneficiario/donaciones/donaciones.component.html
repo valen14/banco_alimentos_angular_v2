@@ -1,20 +1,34 @@
-<p>donaciones works!</p>
-
-<div class="content">
-    <!-- LISTADO DONACION -->
-    <div class="row justify-content-md-center">
-        <ul class="list-group">
-        <li class="list-group-item list-group-item-action" *ngFor="let do of donaciones; let id=index" >
-            <div>
-                <span>Descripcion: {{do.descripcion}}</span><br>
-                <span>Peso: {{do.peso}}</span><br>
-                <span>Volumen: {{do.volumen}}</span>
-            </div> 
-            <div class="pull-right">
-                <button class="btn btn-primary btn-xs fa fa-eye" [routerLink]="[id]"></button>
-            </div>
-        </li>
-        </ul>
-    </div>
-
-</div>
+<h4>Donaciones: {{filter}}</h4>
+<table class="table">
+    <!--<caption>Envios: {{filter}}</caption>-->
+    <thead>
+      <tr>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Peso</th>
+        <th scope="col">Volumen</th>
+        <th scope="col">Fecha Maxima de Traslado</th>
+        <th scope="col">Fecha de Traslado</th>
+        <th scope="col">Comentario de Traslado</th>
+        <!--<th scope="col">Estado</th> -->
+        <th scope="col">Organizacion Beneficiaria</th>      
+        <th scope="col" >Acciones:</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let envio of envios">
+        <th>{{envio.descripcion}}</th>
+        <th>{{envio.peso}}</th>
+        <th>{{envio.volumen[0] && envio.volumen[1]}}</th>
+        <th>{{envio.fecha_maxima}}</th>
+        <th>{{envio.fecha_traslado}}</th>
+        <th>{{envio.comentario_traslado}}</th>
+        <!--<th>{{envio.estado}}</th>
+        <th *ngIf="filter == 'sin-asignar'">
+          <button class="btn btn-info btn-small" (click)="verEnvioButtonClick(envio.id)">Asignar traslado</button>
+        </th>
+        <th *ngIf="filter !== 'sin-asignar'">
+           {{obtenerOrganizacionBeneficiaria(envio)}}
+        </th> -->
+      </tr>
+    </tbody>
+  </table>

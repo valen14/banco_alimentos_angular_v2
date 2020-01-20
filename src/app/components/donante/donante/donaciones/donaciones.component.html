@@ -1,20 +1,27 @@
-<div class="content">
-    <!-- LISTADO DONACIONES -->
-    <div class="row justify-content-md-center">
-        <ul class="list-group">
-        <li class="list-group-item list-group-item-action" *ngFor="let donacion of bultos; let idx=index" >
-            <div>
-                <span>Descripcion: {{donacion.descripcion}}</span><br>
-                <span>Fecha de Disponibilidad: {{donacion.fecha_disponibilidad}}</span><br>
-                <span>Fecha de Vencimiento: {{donacion.fecha_vencimiento}}</span><br>
-                <span>Estado: {{donacion.estado}}</span>
-            </div> 
-            <div class="pull-right">
-                <button class="btn btn-primary btn-xs fa fa-pencil" [routerLink]="['/donante/edit-donacion',idx]"></button>
-                <button class="btn btn-danger btn-xs fa fa-close" (click)="cancelarDonacion(donacion)"></button>
-            </div>
-        </li>
-        </ul>
-    </div>
 
-</div>
+<table class="table">
+    <caption>Donaciones</caption>
+    <thead>
+      <tr>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Volumen(Ancho x Largo)</th>
+        <th scope="col">Fecha de Disponibilidad</th>
+        <th scope="col">Fecha de Vencimiento</th>
+        <th scope="col">Estado</th>
+        <th scope="col" >Acciones:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bulto of bultos; let idx=index">
+        <th>{{bulto.descripcion}}</th>
+        <th>{{bulto.volumen[0]}} x {{bulto.volumen[1]}}</th>
+        <th>{{bulto.fecha_disponibilidad}}</th>
+        <th>{{bulto.fecha_vencimiento}}</th>
+        <th>{{bulto.estado}}</th>
+        <th *ngIf="bulto.estado == 'pendiente de retiro'">
+            <button class="btn btn-primary btn-xs fa fa-pencil" [routerLink]="['/donante/edit-donacion',idx]"></button>
+            <button class="btn btn-danger btn-xs fa fa-close" (click)="cancelarDonacion(bulto)"></button>
+        </th>
+      </tr>
+    </tbody>
+  </table>

@@ -1,6 +1,21 @@
+<!--
 <p>beneficiario works!</p>
 
 <header class="sticky">
     <a routerLink="donaciones" class="button"> <span> Donaciones </span> </a>
 </header>
-<router-outlet></router-outlet>
+-->
+
+<nav class="navbar navbar-light bg-light">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Mis donaciones
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <a routerLink="donaciones/pendientes"><button class="dropdown-item" type="button">Pendiendes</button></a>
+        <a routerLink="donaciones/concretados"><button class="dropdown-item" type="button">Recibidos</button></a>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+
