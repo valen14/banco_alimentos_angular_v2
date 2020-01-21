@@ -26,16 +26,16 @@ const routes: Routes = [
       { path: 'bultos/:filter', component: BultosComponent },
       {path:'bultos/:id/carga-paquetes', component: CargaPaquetesComponent},
       {
-        path: 'envios/:filter', component: EnviosComponent,
-        children: [
-          { path: 'envios/:id/asignar-traslado', component: EnvioComponent },
-          { path: 'nuevo-envio', component: NuevoEnvioComponent },
-          { path: 'seleccion-paquetes', component: SeleccionPaquetesComponent },
-          { path: 'seleccion-voluntarios', component: SeleccionVoluntarioComponent }
-        ]
+        path: 'envios/:filter', component: EnviosComponent,       
       },
-      //{path:'envios/:id/asignar-traslado',component: },
-      { path: 'paquetes/:filter', component: PaquetesComponent }
+      { path: 'envios/:id/asignar-traslado', component: EnvioComponent },
+      { path: 'envios/:parametro/nuevo-envio', component: NuevoEnvioComponent},
+    { path: 'envios/nuevo-envio/:id/seleccion-paquetes', component: SeleccionPaquetesComponent },
+    
+      
+      { path: 'seleccion-voluntarios', component: SeleccionVoluntarioComponent },
+ //{path:'envios/:id/asignar-traslado',component: },
+      { path: 'paquetes', component: PaquetesComponent }
 
     ]
   }

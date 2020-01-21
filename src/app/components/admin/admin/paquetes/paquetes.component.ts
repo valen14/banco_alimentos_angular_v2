@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PaquetesComponent implements OnInit {
 
-  filter: String
+  
   paquetes = []
 
   constructor(private ar: ActivatedRoute,
@@ -19,35 +19,20 @@ export class PaquetesComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.filter = this.ar.snapshot.params['filter']
-    console.log(this.filter)
-    this.ar.paramMap.subscribe((params) => {
-      this.filter = params.get('filter')
+ 
+   
       this.cargarTabla()
-    })
+    
   }
 
   private cargarTabla(){
-    switch(this.filter){
-    case 'todos': 
+   
+     
       this.paqueteService.find().subscribe((paquetes)=>{
         console.log(paquetes)
         this.paquetes=paquetes
       })
-      break
-    case 'sin-asignar':
-      this.paqueteService.find().subscribe((paquetes)=>{
-        console.log(paquetes)
-        this.paquetes=paquetes
-      })
-      break
-    case 'asignados':
-      this.paqueteService.find().subscribe((paquetes)=>{
-        console.log(paquetes)
-        this.paquetes=paquetes
-      })
-      break
-    }
+      
   }
   
   asignadoAEnvio(paquete:Paquete){

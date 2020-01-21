@@ -8,15 +8,31 @@
         <label for="inputEmail" class="sr-only">Descripcion</label>
         <input type="descripcion" id="inputDesc" class="form-control" placeholder="Descripcion" required autofocus formControlName="descripcion">
         
-        <label for="inputEmail" class="sr-only">Fecha Maxima</label>
+        <label class="sr-only">Fecha Maxima</label>
         <input type="fecha_maxima" id="inputFechaMaxima" class="form-control" placeholder="Fecha de Maxima" required autofocus formControlName="fecha_maxima">
         
-        <label for="inputEmail" class="sr-only">Fecha Traslado</label>
+        <label class="sr-only">Fecha Traslado</label>
         <input type="fecha_traslado" id="inputFechaTraslado" class="form-control" placeholder="Fecha de Traslado" required autofocus formControlName="fecha_traslado">
         
-        <label for="inputEmail" class="sr-only">Comentario Traslado</label>
+        <label class="sr-only">Comentario Traslado</label>
         <input type="comentario_traslado" id="inputComentario" class="form-control" placeholder="Comentario del Traslado" required autofocus formControlName="comentario_traslado">
         
         <button class="btn btn-lg btn-primary btn-block" type="submit">Seleccionar Paquetes</button>
     </form>
 </body>
+
+
+<!--
+<body class="text-center">
+    <h4>Donar</h4>
+    <form class="form-signin" (ngSubmit)="onSubmit()" [formGroup]="donacionForm">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Descripcion</label>
+        <input type="descripcion" id="inputEmail" class="form-control" placeholder="Descripcion" required autofocus formControlName="descripcion">
+        <input type="ancho" id="inputEmail" class="form-control" placeholder="Ancho" required autofocus formControlName="ancho">
+        <input type="largo" id="inputEmail" class="form-control" placeholder="Largo" required autofocus formControlName="largo">
+        <input type="fecha_disponibilidad" id="inputEmail" class="form-control" placeholder="Fecha de Disponibilidad" required autofocus formControlName="fecha_disponibilidad">
+        <input type="fecha_vencimiento" id="inputEmail" class="form-control" placeholder="Fecha de Vencimiento" required autofocus formControlName="fecha_vencimiento">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Confirmar Donacion</button>
+    </form>
+</body> -->

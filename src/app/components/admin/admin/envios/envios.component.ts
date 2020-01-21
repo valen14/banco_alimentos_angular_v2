@@ -20,10 +20,10 @@ export class EnviosComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.filter = this.ar.snapshot.params['filter']
-    console.log(this.filter)
+    //this.filter = this.ar.snapshot.params['filter']
+    //console.log(this.filter)
     this.ar.paramMap.subscribe((params) => {
-      //this.filter = params.get('filter')
+      this.filter = params.get('filter')
       this.cargarTabla()
     })
   }
@@ -75,6 +75,8 @@ export class EnviosComponent implements OnInit {
     return nombre
   }
   
-
+  nuevoEnvioButtonClick(){
+    this.router.navigateByUrl('admin/envios/todos/nuevo-envio')
+  }
 
 }

@@ -1,1 +1,53 @@
-<p>seleccion-paquetes works!</p>
+
+<table class="table">
+    <caption>Paquetes:</caption>
+    <thead>
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Ubicacion</th>
+        <th scope="col">Peso</th>
+        <th scope="col">Fecha de Vencimiento</th>
+       <!-- <th scope="col">Tipo de Alimento</th> -->
+        <th scope="col"> Seleccionar Paquetes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let paquete of paquetes; let idx=index">
+        <th>{{paquete.codigo}}</th>
+        <th>{{paquete.ubicacion}}</th>
+        <th>{{paquete.peso}}</th>
+        <th>{{paquete.fecha_vencimiento}}</th>
+        <th>
+          <button class="btn btn-info btn-small" (click)="seleccionarPaqueteButtonClick(paquete,idx)">Agregar</button>
+        </th> 
+        <th>
+          
+        </th>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table">
+    <caption>Paquetes Seleccionados:</caption>
+    <thead>
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Ubicacion</th>
+        <th scope="col">Peso</th>
+        <th scope="col">Fecha de Vencimiento</th>
+       <!-- <th scope="col">Tipo de Alimento</th> -->
+        <th scope="col"> Asignado a Envio</th>
+      </tr>
+    </thead>
+    <tbody
+    >
+      <tr *ngFor="let paquete of paquetesSeleccionados">
+        <th>{{paquete.codigo}}</th>
+        <th>{{paquete.ubicacion}}</th>
+        <th>{{paquete.peso}}</th>
+        <th>{{paquete.fecha_vencimiento}}</th>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-lg btn-primary btn-block" (click)="confirmarSeleccionPaquetes()" >Confirmar Carga</button>
+ 

@@ -1,5 +1,5 @@
 <table class="table">
-    <caption>Paquetes: {{filter}}</caption>
+    <caption>Paquetes:</caption>
     <thead>
       <tr>
         <th scope="col">Codigo</th>
@@ -7,7 +7,7 @@
         <th scope="col">Peso</th>
         <th scope="col">Fecha de Vencimiento</th>
        <!-- <th scope="col">Tipo de Alimento</th> -->
-        <th scope="col" *ngIf="filter=='todos'"> Asignado a Envio</th>
+        <th scope="col"> Asignado a Envio</th>
       </tr>
     </thead>
     <tbody>
@@ -17,7 +17,7 @@
         <th>{{paquete.peso}}</th>
         <th>{{paquete.fecha_vencimiento}}</th>
        <!-- <th>{{obtenerTipoDeAlimento(Paquete)}}</th> -->
-        <th *ngIf="filter=='todos'">
+        <th>
           {{asignadoAEnvio(paquete)}}
         </th>
       </tr>
