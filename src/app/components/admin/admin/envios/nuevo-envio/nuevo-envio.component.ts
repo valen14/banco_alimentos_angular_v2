@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EnvioApi } from 'src/app/service/lbservice';
 import { NuevoEnvioService } from 'src/app/components/admin/admin/nuevo-envio.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nuevo-envio',
@@ -49,6 +50,9 @@ export class NuevoEnvioComponent implements OnInit {
     }
   }
 
+  cancelar(){
+    this.router.navigateByUrl("admin/envios/todos")
+  }
 
 
 }

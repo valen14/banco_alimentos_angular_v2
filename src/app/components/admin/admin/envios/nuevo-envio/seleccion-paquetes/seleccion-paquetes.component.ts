@@ -76,6 +76,8 @@ export class SeleccionPaquetesComponent implements OnInit {
   }
   
 
-
+ atras(){
+   this.router.navigateByUrl("admin/envios/todos/nuevo-envio")
+ }
 
 }
