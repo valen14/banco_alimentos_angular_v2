@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EnvioApi } from 'src/app/service/lbservice';
+import { NuevoEnvioService } from 'src/app/components/admin/admin/nuevo-envio.service';
 
 @Component({
   selector: 'app-nuevo-envio',
@@ -11,7 +12,10 @@ import { EnvioApi } from 'src/app/service/lbservice';
 export class NuevoEnvioComponent implements OnInit {
 
   envioForm: FormGroup
-  constructor(private router: Router, private envioService:EnvioApi) {
+
+  constructor(private router: Router, 
+    private envioService:EnvioApi,
+    private nuevoEnvioService: NuevoEnvioService) {
     this.envioForm = new FormGroup ({
       descripcion: new FormControl(),
       fecha_maxima: new FormControl(),
@@ -24,15 +28,8 @@ export class NuevoEnvioComponent implements OnInit {
   }
 
   onSubmit(){
-    const envio= this.crearEnvio() 
-    console.log(envio)
-    this.envioService.create(envio).subscribe(() => {
-      this.envioService.find().subscribe((envios)=>{
-        const id= envios.indexOf(envio)
-        this.router.navigateByUrl('admin/envios/nuevo-envio/'+id+'/seleccion-paquetes')
-      })    
-    })
-    
+    this.nuevoEnvioService.setEnvio(this.crearEnvio()) 
+    this.router.navigateByUrl('admin/envios/nuevo-envio/seleccion-paquetes')  
   }
 
   private crearEnvio(){
@@ -48,9 +45,10 @@ export class NuevoEnvioComponent implements OnInit {
       fecha_disponibilidad: new Date(),
       comentario_traslado: comentarioTrasladoForm,
       fecha_asignacion: new Date(),
-      estado: 'pendiente de retiro'
+      estado: 'pendiente de asignacion'
     }
   }
+
 
 
 }

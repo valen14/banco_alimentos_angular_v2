@@ -12,7 +12,7 @@ export class EnviosComponent implements OnInit {
   filter: String
   envios = []
   voluntarios=[]
-
+  envioCantidadPaq= []
   constructor(private ar: ActivatedRoute,
     private router: Router,
     private envioService: EnvioApi, private voluntarioService: VoluntarioApi) { 
@@ -34,18 +34,35 @@ export class EnviosComponent implements OnInit {
       this.envioService.find().subscribe((envios)=>{
         console.log(envios)
         this.envios=envios
+        this.envios.forEach(envio => {
+          this.envioService.getPaquetes(envio.id).subscribe((paquetes)=> {
+            this.envioCantidadPaq.push(paquetes.length)
+          })
+        });
+        console.log(this.envioCantidadPaq)
+
       })
       break
     case 'sin-asignar':
       this.envioService.find({where:{estado:'pendiente de asignacion'}}).subscribe((envios)=>{
         console.log(envios)
         this.envios=envios
+        this.envios.forEach(envio => {
+          this.envioService.getPaquetes(envio.id).subscribe((paquetes)=> {
+            this.envioCantidadPaq.push(paquetes.length)
+          })
+        });
+        console.log(this.envioCantidadPaq)
+
       })
+         
       break
     case 'asignados':
       this.envioService.find({where:{estado:'pendiente de traslado'}}).subscribe((envios)=>{
         console.log(envios)
         this.envios=envios
+
+       
       })
       break
     case 'realizados':
@@ -59,6 +76,9 @@ export class EnviosComponent implements OnInit {
       console.log(voluntarios)
       this.voluntarios=voluntarios
     })
+
+
+  
   }
 
   asignarTrasladoButtonClick(id) {
@@ -79,4 +99,30 @@ export class EnviosComponent implements OnInit {
     this.router.navigateByUrl('admin/envios/todos/nuevo-envio')
   }
 
+  cantidadPaquetesDelEnvio(index: number){
+    var cant=this.envioCantidadPaq[index]
+    console.log(cant)
+    return cant
+  }
+
+  borrarEnvioButtonClick(id: any){
+    this.envioService.deleteById(id).subscribe(()=>{
+      alert("ok")
+      this.envioService.find({where:{estado:'pendiente de asignacion'}}).subscribe((envios)=>{
+        console.log(envios)
+        this.envios=envios
+        this.envios.forEach(envio => {
+          this.envioService.getPaquetes(envio.id).subscribe((paquetes)=> {
+            this.envioCantidadPaq.push(paquetes.length)
+          })
+        });
+        console.log(this.envioCantidadPaq)
+
+      })
+
+  })
+
+  }
+
+  obtenerOrganizacionBeneficiaria(id: any){}
 }
