@@ -12,11 +12,12 @@ import { NewCarComponent } from './voluntario/cars/new-car/new-car.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BultosComponent } from './voluntario/bultos/bultos.component';
 import { BultoComponent } from './voluntario/bultos/bulto/bulto.component';
+import { EditCarComponent } from './voluntario/cars/edit-car/edit-car.component';
 
 
 
 @NgModule({
-  declarations: [VoluntarioComponent, EnviosComponent, EnvioComponent, CarsComponent, CarComponent, InsignasComponent, BultosComponent, BultoComponent, NewCarComponent],
+  declarations: [VoluntarioComponent, EnviosComponent, EnvioComponent, CarsComponent, CarComponent, InsignasComponent, BultosComponent, BultoComponent, NewCarComponent, EditCarComponent],
   imports: [
     CommonModule,
     VoluntarioRoutingModule,

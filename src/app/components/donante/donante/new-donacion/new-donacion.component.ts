@@ -19,8 +19,9 @@ export class NewDonacionComponent implements OnInit {
     this.obtenerIdUsuarioLoguedo(emailUserLog)
     this.donacionForm=new FormGroup({
       descripcion: new FormControl(),
-      ancho: new FormControl(),
-      largo: new FormControl(),
+      auto: new FormControl(),
+      camioneta: new FormControl(),
+      camion: new FormControl(),
       fecha_disponibilidad: new FormControl(),
       fecha_vencimiento: new FormControl()
     })
@@ -46,29 +47,31 @@ export class NewDonacionComponent implements OnInit {
 
   private cargarDonacion(){
     const donacion=this.crearDonacion()
-    console.log(donacion)
-    this.donanteService.getBultos(this.idUserLog).subscribe((bultos)=>{
-      bultos.push(donacion)
-      console.log(bultos)
-      this.donanteService.createBultos(this.idUserLog,bultos).subscribe(() => {
-        this.router.navigateByUrl('/donante')
-      } )    
+    this.donanteService.createBultos(this.idUserLog, donacion).subscribe((don) => {
+      console.log(don)
+      this.router.navigateByUrl('/donante')
     })
   }
 
   private crearDonacion(){
     const descripcionForm=this.donacionForm.get('descripcion').value
-    const anchoForm= this.donacionForm.get('ancho').value
-    const largoForm= this.donacionForm.get('largo').value
     const fechaDisponibilidadForm=this.donacionForm.get('fecha_disponibilidad').value
     const fechaVencimientoForm=this.donacionForm.get('fecha_vencimiento').value
+    const auto= this.donacionForm.get('auto').value
+    const camioneta= this.donacionForm.get('camioneta').value
+    const camion= this.donacionForm.get('auto').value
+    let vehiculos = []
+    if(auto) {vehiculos.push("auto")}
+    if(camioneta) {vehiculos.push("camioneta")}
+    if(camion) {vehiculos.push("camion")}
     return {
       descripcion: descripcionForm,
-      volumen: [anchoForm,largoForm],
+      volumen:  vehiculos,
       fecha_disponibilidad: new Date(),
       revisado: false,
       fecha_vencimiento: new Date(),
       estado: "pendiente de retiro",
+      estado_traslado: "sin_asignar"
     }
   }
 }
