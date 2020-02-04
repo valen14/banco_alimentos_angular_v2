@@ -17,86 +17,89 @@ export class BultosComponent implements OnInit {
   constructor(private ar: ActivatedRoute,
     private router: Router,
     private bultosService: BultoApi,
-    private donantesService: OrganizacionDonanteApi) { 
-     
-    }
+    private donantesService: OrganizacionDonanteApi) {
+
+  }
 
   ngOnInit() {
     this.filter = this.ar.snapshot.params['filter']
-    console.log(this.filter)
     this.ar.paramMap.subscribe((params) => {
       this.filter = params.get('filter')
       this.cargarTabla()
+      console.log(this.filter)
     })
   }
 
   cargarTabla() {
-    // var id
-    // var donante = {
-    //   razon_social: "razon social 1",
-    //   password: '123456',
-    //   cuil: "30-938593454-2",
-    //   direccion: "oa",
-    //   direccion_coordenadas: { lat: 0, lng: 0 },
-    //   email: "rz1@gmail.com",
-    //   puntaje: 0
-    // }
-    // this.donantesService.create(donante).subscribe((d) => {
-    //   console.log(d.id)
-    //   var bulto = {
-    //     descripcion: "descripcion",
-    //     volumen: [
-    //       0
-    //     ],
-    //     fecha_disponibilidad: new Date("2020-01-03T15:10:56.097Z"),
-    //     revisado: false,
-    //     fecha_vencimiento: new Date("2020-01-03T15:10:56.097Z"),
-    //     estado: "pendiente",
-    //     organizacionDonanteId: d.id
-    //   }
-    //   this.bultosService.create(bulto).subscribe((b) => console.log(b))
-    // })
-    // this.bultosService.create({
-    // })
+    this.donantesService.find().subscribe((donantes) => {
+      this.donantes = donantes;
+    })
     switch (this.filter) {
-      case 'pendientes':
+      case 'sin-traslado': // estado = pend_retiro ; estado_traslado = sin_asignar
         this.bultosService.find({
           where: {
-            or: [
-              { estado: "pendiente de carga"},
-              { estado: "pendiente de retiro"},
+            and: [
+              {estado: "pendiente de retiro"},
+              {estado_traslado: "sin_asignar"}
             ]
+          }
+        }).subscribe((bultos) => { this.bultos = bultos })
+        break;
+      case 'con-traslado-voluntario': // estado = pend_retiro ; estado_traslado = asignado_vol
+        this.bultosService.find({
+          where: {
+            and: [
+              {estado: "pendiente de retiro"},
+              {estado_traslado: "asignado_vol"}
+            ]
+          }
+        }).subscribe((bultos) => { this.bultos = bultos })
+        break;
+      case 'con-traslado-propio': // estado = pend_retiro ; estado_traslado = asignado_propio
+        this.bultosService.find({
+          where: {
+            and: [
+              {estado: "pendiente de retiro"},
+              {estado_traslado: "asignado_propio"}
+            ]
+          }
+        }).subscribe((bultos) => { this.bultos = bultos })
+        break;
+      case 'pendientes-carga': // estado = pend_carga
+        this.bultosService.find({
+          where: {
+            estado: "pendiente de carga"
           }
         }).subscribe((bultos) => { this.bultos = bultos })
         break;
       default:
         this.bultosService.find().subscribe((bultos) => {
           this.bultos = bultos;
-          console.log(bultos)
-        })
-        this.donantesService.find().subscribe((donantes) => {
-          this.donantes=donantes;
-          console.log(donantes)
         })
         break;
     }
   }
 
-  obtenerDonante(bulto:Bulto){
+  obtenerDonante(bulto: Bulto) {
     var razon_social
     this.donantes.forEach((donante) => {
-      if(donante.id == bulto.organizacionDonanteId)
-        razon_social= donante.razon_social
+      if (donante.id == bulto.organizacionDonanteId)
+        razon_social = donante.razon_social
     })
-     return razon_social 
+    return razon_social
   }
 
   confirmarTrasladoButtonClick() {
-    alert("A desarrollar") 
+    alert("A desarrollar")
   }
 
   cargarContenidoButtonClick(id) {
     this.router.navigateByUrl('/admin/bultos/' + id + '/carga-paquetes')
+  }
+
+  asignarTrasladoButtonClick(id){
+    console.log("A")
+    this.router.navigateByUrl('/admin/envios/asignar/bulto/' + id)
   }
 
 }

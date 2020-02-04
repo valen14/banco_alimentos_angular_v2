@@ -6,6 +6,7 @@ import { EnvioComponent } from './voluntario/envios/envio/envio.component';
 import { CarComponent } from './voluntario/cars/car/car.component';
 import { CarsComponent } from './voluntario/cars/cars.component';
 import { InsignasComponent } from './voluntario/insignas/insignas.component';
+import { NewCarComponent } from './voluntario/cars/new-car/new-car.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
       {path: 'envios/:id/ver', component: EnvioComponent},           
       {path: 'cars', component: CarsComponent},
       {path: 'cars/:id', component: CarComponent},
+      {path: 'cars/nuevo/:id', component: NewCarComponent},
       {path: 'insignas', component: InsignasComponent}
     ]
   }

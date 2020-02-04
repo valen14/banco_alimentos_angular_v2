@@ -1,1 +1,31 @@
 <p>cars works!</p>
+
+<div>
+    <button type="button" class="btn btn-info" (click)="irACrearVehiculo(voluntario.id)">Nuevo Vehiculo</button>
+</div>
+
+<table class="table">
+    <caption>Mis Vehiculos</caption>
+    <thead>
+      <tr>
+        <th scope="col">Patente</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Distancia maxima</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let veh of vehiculos">
+        <th>{{veh.patente}}</th>
+        <th>{{veh.marca}}</th>
+        <th>{{veh.modelo}}</th>
+        <th>{{veh.distancia_maxima}}</th>
+        <th>{{veh.volumen}}</th>
+        <th>
+            Botones
+        </th>
+      </tr>
+    </tbody>
+  </table>

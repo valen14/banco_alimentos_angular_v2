@@ -14,29 +14,24 @@ import { SeleccionPaquetesComponent } from './admin/envios/nuevo-envio/seleccion
 import { SeleccionVoluntarioComponent } from './admin/envios/sin-asignar/seleccion-voluntario/seleccion-voluntario.component';
 import { CargaPaquetesComponent } from './admin/carga-paquetes/carga-paquetes.component';
 import { PaquetesComponent } from './admin/paquetes/paquetes.component';
+import { AsignarUnEnvioComponent } from './admin/envios/asignar-un-envio/asignar-un-envio.component';
 
 
 const routes: Routes = [
   {
     path: '', component: AdminComponent,
     children: [
-      { path: 'users/:userType', component: UsersComponent},
+      { path: 'users/:userType', component: UsersComponent },
       { path: 'cars', component: CarsComponent },
       { path: 'cars/:id', component: CarComponent },
       { path: 'bultos/:filter', component: BultosComponent },
-      {path:'bultos/:id/carga-paquetes', component: CargaPaquetesComponent},
-      {
-        path: 'envios/:filter', component: EnviosComponent,       
-      },
-      { path: 'envios/:id/asignar-traslado', component: EnvioComponent },
-      { path: 'envios/:parametro/nuevo-envio', component: NuevoEnvioComponent},
-    { path: 'envios/nuevo-envio/:id/seleccion-paquetes', component: SeleccionPaquetesComponent },
-    
-      
+      { path: 'bultos/:id/carga-paquetes', component: CargaPaquetesComponent },
+      { path: 'envios/:filter', component: EnviosComponent, },
+      { path: 'envios/asignar/:type/:id', component:  AsignarUnEnvioComponent},
+      { path: 'envios/:parametro/nuevo-envio', component: NuevoEnvioComponent },
+      { path: 'envios/nuevo-envio/:id/seleccion-paquetes', component: SeleccionPaquetesComponent },
       { path: 'seleccion-voluntarios', component: SeleccionVoluntarioComponent },
- //{path:'envios/:id/asignar-traslado',component: },
       { path: 'paquetes', component: PaquetesComponent }
-
     ]
   }
 ];

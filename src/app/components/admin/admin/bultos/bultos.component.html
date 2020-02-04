@@ -6,7 +6,8 @@
       <th scope="col">Descripcion</th>
       <th scope="col">Fecha de Disponibilidad</th>
       <th scope="col">Fecha de Vencimiento</th>
-      <th scope="col">Estado</th>
+      <th scope="col">Estado del bulto</th>
+      <th scope="col">Estado del traslado</th>
       <th scope="col" *ngIf="filter !== 'todos'">Acciones:</th>
     </tr>
   </thead>
@@ -17,9 +18,16 @@
       <th>{{bulto.fecha_disponibilidad}}</th>
       <th>{{bulto.fecha_vencimiento}}</th>
       <th>{{bulto.estado}}</th>
+      <th>{{bulto.estado_traslado}}</th>
       <th *ngIf="filter !== 'todos'">
-        <button class="btn btn-info btn-small" *ngIf="bulto.estado == 'pendiente de carga'" (click)="cargarContenidoButtonClick(bulto.id)">Cargar contenido</button>
-        <button class="btn btn-info btn-small" *ngIf="bulto.estado == 'pendiente de retiro'" (click)="confirmarTrasladoButtonClick()">Confirmar traslado</button>
+        <button class="btn btn-info btn-small" *ngIf="bulto.estado == 'pendiente de carga'"
+          (click)="cargarContenidoButtonClick(bulto.id)">Cargar contenido</button>
+        <button class="btn btn-info btn-small"
+          *ngIf="(bulto.estado == 'pendiente de retiro') && (bulto.estado_traslado !== 'sin_asignar')"
+          (click)="confirmarTrasladoButtonClick()">Confirmar traslado</button>
+        <button class="btn btn-info btn-small"
+          *ngIf="(bulto.estado == 'pendiente de retiro') && (bulto.estado_traslado == 'sin_asignar')"
+          (click)="asignarTrasladoButtonClick(bulto.id)">Asignar traslado</button>
       </th>
     </tr>
   </tbody>

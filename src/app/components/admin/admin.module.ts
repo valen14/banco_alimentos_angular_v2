@@ -17,10 +17,11 @@ import { AsignadosComponent } from './admin/envios/asignados/asignados.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NuevoEnvioComponent } from './admin/envios/nuevo-envio/nuevo-envio.component';
 import { CargaPaquetesComponent } from './admin/carga-paquetes/carga-paquetes.component';
+import { AsignarUnEnvioComponent } from './admin/envios/asignar-un-envio/asignar-un-envio.component';
 
 
 @NgModule({
-  declarations: [AdminComponent,  UsersComponent,  BultosComponent,  EnviosComponent, EnvioComponent, CarsComponent, CarComponent, PaquetesComponent, SeleccionPaquetesComponent, SeleccionVoluntarioComponent, SinAsignarComponent, AsignadosComponent,NuevoEnvioComponent, CargaPaquetesComponent],
+  declarations: [AdminComponent,  UsersComponent,  BultosComponent,  EnviosComponent, EnvioComponent, CarsComponent, CarComponent, PaquetesComponent, SeleccionPaquetesComponent, SeleccionVoluntarioComponent, SinAsignarComponent, AsignadosComponent,NuevoEnvioComponent, CargaPaquetesComponent, AsignarUnEnvioComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

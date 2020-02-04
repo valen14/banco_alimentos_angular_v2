@@ -8,14 +8,17 @@ import { EnvioComponent } from './voluntario/envios/envio/envio.component';
 import { CarsComponent } from './voluntario/cars/cars.component';
 import { CarComponent } from './voluntario/cars/car/car.component';
 import { InsignasComponent } from './voluntario/insignas/insignas.component';
+import { NewCarComponent } from './voluntario/cars/new-car/new-car.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [VoluntarioComponent, EnviosComponent, EnvioComponent, CarsComponent, CarComponent, InsignasComponent, ],
+  declarations: [VoluntarioComponent, EnviosComponent, EnvioComponent, CarsComponent, CarComponent, InsignasComponent, NewCarComponent, ],
   imports: [
     CommonModule,
-    VoluntarioRoutingModule
+    VoluntarioRoutingModule,
+    ReactiveFormsModule,
   ]
 })
 export class VoluntarioModule { }

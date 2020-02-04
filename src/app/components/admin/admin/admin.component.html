@@ -17,7 +17,10 @@
       Bultos
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <a routerLink="bultos/todos"><button class="dropdown-item" type="button">Listado de Bultos</button></a>
+      <a routerLink="bultos/todos"><button class="dropdown-item" type="button">Todos los Bultos</button></a>
+      <a routerLink="bultos/sin-traslado"><button class="dropdown-item" type="button">Bultos sin asignar traslado</button></a>
+      <a routerLink="bultos/con-traslado-voluntario"><button class="dropdown-item" type="button">Bultos a cargo de voluntario</button></a>
+      <a routerLink="bultos/con-traslado-propio"><button class="dropdown-item" type="button">Bultos a cargo propio</button></a>
       <a routerLink="bultos/pendientes"><button class="dropdown-item" type="button">Bultos pendientes de carga</button></a>
     </div>
   </div>
@@ -26,78 +29,13 @@
       Envios
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <!-- Ver estos links -->
       <a routerLink="envios/todos"><button class="dropdown-item" type="button">Todos</button></a>
       <a routerLink="envios/sin-asignar"><button class="dropdown-item" type="button">Sin Asignar</button></a>
       <a routerLink="envios/asignados"><button class="dropdown-item" type="button">Asignados</button></a>
+      <a routerLink="envios/entregados"><button class="dropdown-item" type="button">Entregados</button></a>
     </div>
   </div>
   <button routerLink="paquetes" class="button"> <span> Paquetes </span> </button>
 </nav>
 <router-outlet></router-outlet>
-
-<!-- <div class="row">
-  <div class="col-sm-3">
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-  </div>
-  <div class="col-sm-3">
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-  </div>
-  <div class="col-sm-3">
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-  </div>
-  <div class="col-sm-3">
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-  </div>
-</div> -->
