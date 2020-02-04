@@ -80,4 +80,8 @@ export class SeleccionPaquetesComponent implements OnInit {
    this.router.navigateByUrl("admin/envios/todos/nuevo-envio")
  }
 
+ cancelar(){
+   this.router.navigateByUrl('admin/envios/todos')
+ }
+
 }

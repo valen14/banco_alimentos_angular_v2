@@ -31,54 +31,38 @@ export class BultosComponent implements OnInit {
   }
 
   cargarTabla() {
-    // var id
-    // var donante = {
-    //   razon_social: "razon social 1",
-    //   password: '123456',
-    //   cuil: "30-938593454-2",
-    //   direccion: "oa",
-    //   direccion_coordenadas: { lat: 0, lng: 0 },
-    //   email: "rz1@gmail.com",
-    //   puntaje: 0
-    // }
-    // this.donantesService.create(donante).subscribe((d) => {
-    //   console.log(d.id)
-    //   var bulto = {
-    //     descripcion: "descripcion",
-    //     volumen: [
-    //       0
-    //     ],
-    //     fecha_disponibilidad: new Date("2020-01-03T15:10:56.097Z"),
-    //     revisado: false,
-    //     fecha_vencimiento: new Date("2020-01-03T15:10:56.097Z"),
-    //     estado: "pendiente",
-    //     organizacionDonanteId: d.id
-    //   }
-    //   this.bultosService.create(bulto).subscribe((b) => console.log(b))
-    // })
-    // this.bultosService.create({
-    // })
+
     switch (this.filter) {
-      case 'pendientes':
+      case 'sin-asignar':
         this.bultosService.find({
-          where: {
-            or: [
-              { estado: "pendiente de carga"},
-              { estado: "pendiente de retiro"},
-            ]
+          where: { 
+            
+              voluntarioId:  {exists: false}
+          
           }
         }).subscribe((bultos) => { this.bultos = bultos })
         break;
-      default:
+        case 'asignados':
+          this.bultosService.find({
+            where: { 
+              
+                voluntarioId:  {exists: true}
+            
+            }
+          }).subscribe((bultos) => { this.bultos = bultos })
+          break;
+      default:{
         this.bultosService.find().subscribe((bultos) => {
           this.bultos = bultos;
           console.log(bultos)
+          
         })
+      }
         this.donantesService.find().subscribe((donantes) => {
           this.donantes=donantes;
           console.log(donantes)
         })
-        break;
+        
     }
   }
 
@@ -91,7 +75,7 @@ export class BultosComponent implements OnInit {
      return razon_social 
   }
 
-  confirmarTrasladoButtonClick() {
+  asignarTrasladoButtonClick() {
     alert("A desarrollar") 
   }
 
