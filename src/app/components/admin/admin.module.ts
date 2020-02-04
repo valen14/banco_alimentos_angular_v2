@@ -18,7 +18,7 @@ import { AsignarUnEnvioComponent } from './admin/envios/asignar-un-envio/asignar
 
 
 @NgModule({
-  declarations: [AdminComponent,  UsersComponent,  BultosComponent,  EnviosComponent, EnvioComponent, CarsComponent, CarComponent, PaquetesComponent, SeleccionPaquetesComponent,NuevoEnvioComponent, CargaPaquetesComponent],
+  declarations: [AdminComponent,  UsersComponent,  BultosComponent,  EnviosComponent, EnvioComponent, CarsComponent, CarComponent, PaquetesComponent, SeleccionPaquetesComponent,NuevoEnvioComponent, CargaPaquetesComponent, AsignarUnEnvioComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

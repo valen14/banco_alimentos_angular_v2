@@ -16,7 +16,7 @@ import { BultoComponent } from './voluntario/bultos/bulto/bulto.component';
 
 
 @NgModule({
-  declarations: [VoluntarioComponent, EnviosComponent, EnvioComponent, CarsComponent, CarComponent, InsignasComponent, BultosComponent, BultoComponent, ],
+  declarations: [VoluntarioComponent, EnviosComponent, EnvioComponent, CarsComponent, CarComponent, InsignasComponent, BultosComponent, BultoComponent, NewCarComponent],
   imports: [
     CommonModule,
     VoluntarioRoutingModule,
