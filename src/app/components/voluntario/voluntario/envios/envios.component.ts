@@ -26,8 +26,11 @@ export class EnviosComponent implements OnInit {
     }
 
     private obtenerEnvios(){
-      this.filter = this.ar.snapshot.params['filter']
-      console.log(this.filter)
+      //this.filter = this.ar.snapshot.params['filter']
+      this.ar.paramMap.subscribe((params) => {
+        this.filter = params.get('filter')
+        console.log(this.filter)
+      })
       this.voluntarioService.getEnvios(this.idUserLog).subscribe((envios) => {
         console.log(envios),
         this.envios = envios

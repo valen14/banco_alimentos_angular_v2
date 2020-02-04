@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let paquete of paquetes">
+      <tr *ngFor="let paquete of paquetes; let  idx=index">
         <th>{{paquete.codigo}}</th>
         <th>{{paquete.ubicacion}}</th>
         <th>{{paquete.peso}}</th>
@@ -19,6 +19,9 @@
        <!-- <th>{{obtenerTipoDeAlimento(Paquete)}}</th> -->
         <th>
           {{asignadoAEnvio(paquete)}}
+        </th>
+        <th >
+          <button class="btn btn-info btn-small"  (click)="verDetallesButtonClick(idx)">Ver Detalles</button>
         </th>
       </tr>
     </tbody>

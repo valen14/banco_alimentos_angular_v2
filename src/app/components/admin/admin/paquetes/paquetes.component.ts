@@ -41,4 +41,8 @@ export class PaquetesComponent implements OnInit {
     return "Si"
   }
 
+  verDetallesButtonClick(id: number){
+    alert("a desarrollar")
+  }
+
 }

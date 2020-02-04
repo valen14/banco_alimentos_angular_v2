@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SinAsignarComponent } from './sin-asignar.component';
+import { BultosComponent } from './bultos.component';
 
-describe('SinAsignarComponent', () => {
-  let component: SinAsignarComponent;
-  let fixture: ComponentFixture<SinAsignarComponent>;
+describe('BultosComponent', () => {
+  let component: BultosComponent;
+  let fixture: ComponentFixture<BultosComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SinAsignarComponent ]
+      declarations: [ BultosComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SinAsignarComponent);
+    fixture = TestBed.createComponent(BultosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

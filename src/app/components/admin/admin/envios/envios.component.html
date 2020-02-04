@@ -13,12 +13,14 @@
         <th scope="col">Fecha de Traslado</th>
         <th scope="col">Comentario de Traslado</th>
         <th scope="col">Estado</th>
-        <th scope="col">Organizacion Beneficiaria</th>      
-        <th scope="col" >Acciones:</th>
+        <th scope="col" >Cantidad de paquetes del envio: </th>
+        <th scope="col" *ngIf="filter !== 'sin-asignar'">Voluntario</th>
+        <th scope="col" *ngIf="filter !== 'sin-asignar'">Organizacion Beneficiaria</th>      
+        
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let envio of envios">
+      <tr *ngFor="let envio of envios; let idx=index">
         <th>{{envio.descripcion}}</th>
         <th>{{envio.peso}}</th>
         <th>{{envio.volumen[0] && envio.volumen[1]}}</th>
@@ -26,11 +28,19 @@
         <th>{{envio.fecha_traslado}}</th>
         <th>{{envio.comentario_traslado}}</th>
         <th>{{envio.estado}}</th>
+        <th>{{cantidadPaquetesDelEnvio(idx)}} </th>
+        <th *ngIf="filter !== 'sin-asignar'">
+          {{obtenerVoluntarioAsignado(envio)}}
+       </th>
+       <th *ngIf="filter !== 'sin-asignar'">
+         {{obtenerOrganizacionBeneficiaria(envio.id)}}
+      </th>
         <th *ngIf="filter == 'sin-asignar'">
+          <button class="btn btn-danger btn-xs fa fa-trash-o" (click)="borrarEnvioButtonClick(envio.id)"></button>
           <button class="btn btn-info btn-small" (click)="asignarTrasladoButtonClick(envio.id)">Asignar traslado</button>
         </th>
-        <th *ngIf="filter !== 'sin-asignar'">
-           {{obtenerVoluntarioAsignado(envio)}}
+        <th *ngIf="filter == 'todos'">
+          <button class="btn btn-info btn-small"  (click)="verDetallesButtonClick(idx)">Ver Detalles</button>
         </th>
       </tr>
     </tbody>

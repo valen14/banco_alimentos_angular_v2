@@ -6,9 +6,16 @@
   </button>
   <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
     <ul class="navbar-nav" *ngIf="!isLoggedIn">
-      <li class="nav-item active" routerLinkActive="active">
-        <a class="nav-link" routerLink="about">Sobre nosotros</a>
-      </li>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sobre nosotros
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <a routerLink="about/mision"><button class="dropdown-item" type="button">Misión - Visión - Valores</button></a>
+          <a routerLink="about/historia"><button class="dropdown-item" type="button"> Historia</button></a>
+          <a routerLink="about/equipo"><button class="dropdown-item" type="button">Equipo</button></a>
+        </div>
+      </div>
       <li classa="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="contact">Contacto</a>
       </li>

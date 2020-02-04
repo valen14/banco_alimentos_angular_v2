@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Paquete, PaqueteApi, EnvioApi } from 'src/app/service/lbservice';
+import { Paquete, PaqueteApi, EnvioApi, Envio } from 'src/app/service/lbservice';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Route } from '@angular/compiler/src/core';
+import { NuevoEnvioService } from '../../../nuevo-envio.service';
+
 
 @Component({
   selector: 'app-seleccion-paquetes',
@@ -13,10 +15,13 @@ export class SeleccionPaquetesComponent implements OnInit {
   paquetes = []
   paquetesSeleccionados = []
   id
+  
 
   constructor(private ar: ActivatedRoute,
     private router: Router,
-    private paqueteService: PaqueteApi,private envioService: EnvioApi) { 
+    private paqueteService: PaqueteApi,
+    private envioService: EnvioApi,
+    private nuevoEnvioService: NuevoEnvioService) { 
       this.ar.paramMap.subscribe((params) => {
         this.id = params.get('id')
       })
@@ -28,7 +33,14 @@ export class SeleccionPaquetesComponent implements OnInit {
   }
 
   confirmarSeleccionPaquetes(){
-    console.log('ok')
+
+    this.nuevoEnvioService.createEnvio(this.paquetesSeleccionados)
+    //console.log(this.nuevoEnvioService.getEnvio())
+    this.router.navigateByUrl('admin/envios/todos')
+
+    //this.envioService.create(this.nuevoEnvio.getEnvio()).subscribe(() => {
+      
+    //})
     //this.envioService.find().subscribe((envios)=>{
      // envios[this.id]['paquetes']=this.paquetesSeleccionados
       
@@ -59,11 +71,17 @@ export class SeleccionPaquetesComponent implements OnInit {
 
   seleccionarPaqueteButtonClick(paquete: Paquete,id: any){
     this.paquetesSeleccionados.push(paquete)
-    this.paquetes=this.paquetes.filter(e=>e.id!==paquete.id)
+    this.paquetes=this.paquetes.filter(p=>p.id!==paquete.id)
     console.log(this.paquetes)
   }
   
 
+ atras(){
+   this.router.navigateByUrl("admin/envios/todos/nuevo-envio")
+ }
 
+ cancelar(){
+   this.router.navigateByUrl('admin/envios/todos')
+ }
 
 }

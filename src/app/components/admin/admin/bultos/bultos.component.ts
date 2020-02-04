@@ -76,7 +76,7 @@ export class BultosComponent implements OnInit {
         this.bultosService.find().subscribe((bultos) => {
           this.bultos = bultos;
         })
-        break;
+        
     }
   }
 
