@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: 'envios/:filter', component: EnviosComponent, },
       { path: 'envios/asignar/:type/:id', component:  AsignarUnEnvioComponent},
       { path: 'envios/:parametro/nuevo-envio', component: NuevoEnvioComponent },
-      { path: 'envios/nuevo-envio/:id/seleccion-paquetes', component: SeleccionPaquetesComponent },
+      { path: 'envios/nuevo-envio/seleccion-paquetes', component: SeleccionPaquetesComponent },
       { path: 'envios/:id/asignar-traslado', component: EnvioComponent },
     
       

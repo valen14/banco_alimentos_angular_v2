@@ -60,8 +60,7 @@ export class SeleccionPaquetesComponent implements OnInit {
   }
 
   private cargarTabla(){  
-    this.paqueteService.find().subscribe((paquetes)=>{
-      console.log(paquetes)
+    this.paqueteService.find<Envio>( ).subscribe((paquetes)=>{
       paquetes.forEach(paquete => {
         if(paquete['envioId'] == null)
           this.paquetes.push(paquete)
