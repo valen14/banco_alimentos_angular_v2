@@ -1,8 +1,112 @@
-<p>about works!</p>
 
-<header class="sticky">
-    <a routerLink="authors" class="button"> <span> Authors</span> </a>
-    <a routerLink="links" class="button"> <span> Tutorial Links</span> </a>
-    <a routerLink="info" class="button"> <span> More Info</span> </a>
-</header>
+ <main class="container">
+    <br>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h3>Quienes Somos</h3>
+            <p class="lead text-muted">
+           
+               Somos una Organización de la Sociedad Civil (OSC), que tiene como objetivo disminuir el hambre y la desnutrición a través del recupero de alimentos.
+               
+            </p>
+            <p class="lead text-muted">
+                
+                Nacimos como Asociación Civil sin fines de lucro en el año 2000, como uno de los primeros Bancos de Alimentos del país.
+                
+             </p>
+             <p class="lead text-muted">
+           
+                
+                Somos socios fundadores de la Red Argentina de Bancos de Alimentos, que nuclea a otros 14 Bancos constituidos en el país, 3 en formación, 2 organizaciones adherentes y 4 iniciativas de Bancos de Alimentos.
+                
+             </p>
+             <p class="lead text-muted">
+           
+                Defendemos el Derecho Humano a una alimentación saludable, logrado a través del esfuerzo de nuestro staff, voluntarios y la solidaridad de empresarios, productores y donantes.
+                
+             </p>
+        </div>
+    </section>
+</main>   
+
+
+
+
+   
+  
+      
+        <main class="container">
+            <br>
+            <section class="jumbotron text-center">
+                <div class="container" *ngIf="filter == 'mision'">
+                    <h4>Mision</h4>
+                    <p class="lead text-muted">
+                   
+                        Disminuir el hambre, la desnutrición y las malas prácticas alimentarias en la región, mediante el recupero de alimentos, para ser distribuidos a organizaciones comunitarias que presten servicio alimentario a sectores necesitados, desarrollando acciones conjuntas con la sociedad, basadas en nuestros valores y capacidades.
+                       
+                    </p>
+                    <h4>Vision</h4>
+                    <p class="lead text-muted">
+                   
+                        Una sociedad sin hambre, nutrida, con conciencia socio-ambiental, donde no se desperdicien alimentos aptos para el consumo.
+                       
+                    </p>
+                    <h4>Valores</h4>
+                    <p class="lead text-muted">
+                   
+                        
+                        COMPROMISO SOCIAL
+                        SOLIDARIDAD
+                        RESPONSABILIDAD
+                        TRANSPARENCIA
+                        EDUCACIÓN
+                        RESPETO AL PRÓJIMO
+                        CONCIENCIA SOCIO AMBIENTAL
+        
+                       
+                    </p>
+                </div>
+                <div class="container" *ngIf="filter == 'historia'">
+                    <h4>Un poco de historia...</h4>
+                    <p class="lead text-muted">
+                   
+                        El modelo de gestión de los Bancos de Alimentos nació en Estados Unidos en la década del 60 como vínculo entre las empresas productoras y de comercialización de alimentos y las personas que padecen hambre.
+                    </p>
+                    <p class="lead text-muted">
+                   
+                        Hoy se distribuyen anualmente más de 500.000 toneladas de alimentos en el país.
+                    </p>
+                    <p class="lead text-muted">
+                   
+                        El Banco Alimentario nació gracias a la iniciativa del Dr. Luis María Sisto quien, luego de conocer en Italia el trabajo de los Bancos de Alimentos, decidió replicar la idea en nuestra comunidad. Durante sus primeros años, el Banco mantuvo su depósito junto al de Cáritas. Luego se mudó al ex complejo industrial de IPAKO, ubicado en Ensenada, donde funcionó hasta 2007.
+                    </p>
+                    <p class="lead text-muted">
+                   
+                        Desde entonces, la asociación posee su depósito y oficinas en el predio cedido por la Dirección de Vialidad de la Provincia de Buenos Aires.
+                    </p>
+                </div>
+                <div class="container" *ngIf="filter == 'equipo'">
+                    <h4>Equipo</h4>
+                    <p class="lead text-muted">
+
+                       PENDIENTE
+                    </p>
+                </div>
+            </section>
+        </main>   
+        
+        
+        
+        
+           
+     <!--           <th *ngIf="filter == 'sin-asignar'">
+                  <button class="btn btn-info btn-small" *ngIf="bulto.estado == 'pendiente de retiro'" (click)="asignarTrasladoButtonClick()">Asignar traslado</button>
+                </th>
+                <th *ngIf="filter == 'asignados'">
+                  <button class="btn btn-info btn-small" *ngIf="bulto.estado == 'pendiente de carga'" (click)="cargarContenidoButtonClick(bulto.id)">Cargar contenido</button>
+                  <button class="btn btn-info btn-small" *ngIf="bulto.estado == 'cargado'" (click)="verDetallesButtonClick(idx)">Ver Detalles</button>
+                </th>
+  
 <router-outlet></router-outlet>
+
+-->
