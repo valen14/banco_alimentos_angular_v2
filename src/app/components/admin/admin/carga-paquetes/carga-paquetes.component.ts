@@ -46,12 +46,13 @@ export class CargaPaquetesComponent implements OnInit {
 
   ngOnInit() {
     this.idBulto = this.ar.snapshot.params['id']
+    this.paquetes = []
     this.productoService.find<Producto>().subscribe((productos) => {
       this.productos = productos
     })
     this.tipoAlimentoService.find<TipoDeAlimento>().subscribe((tipos) => this.tiposAlimentos = tipos)
     this.contenidoPaquete = []
-    this.paqueteService.find({
+    this.paqueteService.find<Paquete>({
       include: {
         relation: 'bultoProductoPaquetes',
         scope: {
@@ -61,7 +62,11 @@ export class CargaPaquetesComponent implements OnInit {
         }
       }
     }).subscribe((paquetes) => {
-      this.paquetes = paquetes
+      paquetes.forEach((paq) => {
+        if( paq.bultoProductoPaquetes.length !== 0 ) {
+          this.paquetes.push(paq)
+        }
+      })
     })
   }
 
