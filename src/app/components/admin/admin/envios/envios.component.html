@@ -16,7 +16,6 @@
         <th scope="col" >Cantidad de paquetes del envio: </th>
         <th scope="col" *ngIf="filter !== 'sin-asignar'">Voluntario</th>
         <th scope="col" *ngIf="filter !== 'sin-asignar'">Organizacion Beneficiaria</th>      
-        <th scope="col" >Acciones:</th>
         
       </tr>
     </thead>
@@ -40,7 +39,9 @@
           <button class="btn btn-danger btn-xs fa fa-trash-o" (click)="borrarEnvioButtonClick(envio.id)"></button>
           <button class="btn btn-info btn-small" (click)="asignarTrasladoButtonClick(envio.id)">Asignar traslado</button>
         </th>
-
+        <th *ngIf="filter == 'todos'">
+          <button class="btn btn-info btn-small"  (click)="verDetallesButtonClick(idx)">Ver Detalles</button>
+        </th>
       </tr>
     </tbody>
   </table>

@@ -75,12 +75,18 @@ export class BultosComponent implements OnInit {
      return razon_social 
   }
 
+
+
+  cargarContenidoButtonClick(id) {
+    this.router.navigateByUrl('/admin/bultos/' + id + '/carga-paquetes')
+  }
+
   asignarTrasladoButtonClick() {
     alert("A desarrollar") 
   }
 
-  cargarContenidoButtonClick(id) {
-    this.router.navigateByUrl('/admin/bultos/' + id + '/carga-paquetes')
+  verDetallesButtonClick(id: number){
+    alert("a desarrollar")
   }
 
 }

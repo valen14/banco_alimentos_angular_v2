@@ -1,4 +1,4 @@
-<h4>Envios: {{filter}}</h4>
+<h4>Bultos: {{filter}}</h4>
 <table class="table">
     <!--<caption>Envios: {{filter}}</caption>-->
     <thead>
@@ -6,8 +6,8 @@
         <th scope="col">Descripcion</th>
         <th scope="col">Peso</th>
         <th scope="col">Volumen</th>
+        <th scope="col">Fecha de disponibilidad</th>
         <th scope="col">Fecha Maxima de Traslado</th>
-        <th scope="col">Fecha de Traslado</th>
         <th scope="col">Comentario de Traslado</th>
         <!--<th scope="col">Estado</th> -->
         <th scope="col">Origen</th>  
@@ -15,14 +15,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let envio of envios">
-        <th>{{envio.descripcion}}</th>
-        <th>{{envio.peso}}</th>
-        <th>{{envio.volumen[0] && envio.volumen[1]}}</th>
-        <th>{{envio.fecha_maxima}}</th>
-        <th>{{envio.fecha_traslado}}</th>
-        <th>{{envio.comentario_traslado}}</th>
-        <!--<th>{{envio.estado}}</th>
+      <tr *ngFor="let bulto of bultos">
+        <th>{{bulto.descripcion}}</th>
+        <!--<th>{{bulto.peso}}</th>-->
+        <th>{{bulto.volumen[0] && envio.volumen[1]}}</th>
+        <th>{{bulto.fecha_disponibilidad}}</th>
+        <th>{{bulto.fecha_vencimiento}}</th>
+        <!--<th>{{bulto.comentario_traslado}}</th>-->
+        <!--
         <th *ngIf="filter == 'sin-asignar'">
           <button class="btn btn-info btn-small" (click)="verEnvioButtonClick(envio.id)">Asignar traslado</button>
         </th>

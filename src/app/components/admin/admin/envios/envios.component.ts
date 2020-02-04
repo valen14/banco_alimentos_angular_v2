@@ -81,19 +81,6 @@ export class EnviosComponent implements OnInit {
   
   }
 
-  asignarTrasladoButtonClick(id) {
-    alert("a desarrollar")
-    //this.router.navigateByUrl('/admin/envios/' + id + '/asignar-voluntario') 
-  }
-
-  obtenerVoluntarioAsignado(envio: Envio) {
-    var nombre
-    this.voluntarios.forEach(element => {
-      if(element.id==envio.voluntarioId)
-        nombre=element.nombre
-    });
-    return nombre
-  }
   
   nuevoEnvioButtonClick(){
     this.router.navigateByUrl('admin/envios/todos/nuevo-envio')
@@ -124,5 +111,23 @@ export class EnviosComponent implements OnInit {
 
   }
 
+  obtenerVoluntarioAsignado(envio: Envio) {
+    var nombre
+    this.voluntarios.forEach(element => {
+      if(element.id==envio.voluntarioId)
+        nombre=element.nombre
+    });
+    return nombre
+  }
+
   obtenerOrganizacionBeneficiaria(id: any){}
+
+  asignarTrasladoButtonClick(id) {
+    alert("a desarrollar")
+    //this.router.navigateByUrl('/admin/envios/' + id + '/asignar-voluntario') 
+  }
+  
+  verDetallesButtonClick(id: number){
+    alert("a desarrollar")
+  }
 }

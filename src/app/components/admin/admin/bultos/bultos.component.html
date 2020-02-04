@@ -7,7 +7,7 @@
       <th scope="col">Fecha de Disponibilidad</th>
       <th scope="col">Fecha de Vencimiento</th>
       <th scope="col">Estado</th>
-      <th scope="col">Acciones:</th>
+
     </tr>
   </thead>
   <tbody>
@@ -22,6 +22,7 @@
       </th>
       <th *ngIf="filter == 'asignados'">
         <button class="btn btn-info btn-small" *ngIf="bulto.estado == 'pendiente de carga'" (click)="cargarContenidoButtonClick(bulto.id)">Cargar contenido</button>
+        <button class="btn btn-info btn-small" *ngIf="bulto.estado == 'cargado'" (click)="verDetallesButtonClick(idx)">Ver Detalles</button>
       </th>
     </tr>
   </tbody>
