@@ -63,7 +63,7 @@ export class CargaPaquetesComponent implements OnInit {
       }
     }).subscribe((paquetes) => {
       paquetes.forEach((paq) => {
-        if( paq.bultoProductoPaquetes.length !== 0 ) {
+        if (paq.bultoProductoPaquetes.length !== 0) {
           this.paquetes.push(paq)
         }
       })
@@ -121,7 +121,7 @@ export class CargaPaquetesComponent implements OnInit {
       this.bultoService.updateAttributes(this.idBulto, {
         ...b,
         estado: 'cargado',
-        revisado:true
+        revisado: true
       }).subscribe((b) => this.router.navigateByUrl('/admin'))
     })
   }
@@ -140,9 +140,19 @@ export class CargaPaquetesComponent implements OnInit {
   }
 
   eliminarPaquete(paquete) {
-    // console.log
-    this.paqueteService.deleteById(paquete.id).subscribe(() => this.paquetes.splice(this.paquetes.indexOf(paquete)))
-
+    const idPaquete = paquete.id
+    this.bppService.find<BultoProductoPaquete>( {
+      where: {
+        paqueteId: idPaquete
+      }
+    }).subscribe((bppsBorrar) => {
+      bppsBorrar.forEach((bpp) => {
+        this.bppService.deleteById(bpp.id).subscribe((a) => {})
+      })
+    })
+    this.paqueteService.deleteById(paquete.id).subscribe(() => {
+      this.paquetes.splice(this.paquetes.indexOf(paquete))
+    })
   }
 
 }
