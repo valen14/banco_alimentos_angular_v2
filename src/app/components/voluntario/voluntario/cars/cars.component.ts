@@ -44,4 +44,14 @@ export class CarsComponent implements OnInit {
     this.router.navigateByUrl("voluntario/cars/nuevo/" + id)
   }
 
+  editarVehiculo(id) {
+    this.router.navigateByUrl('voluntario/cars/' + id + '/edit')
+  }
+
+  borrarVehiculo(id) {
+    this.vehiculoService.deleteById<Vehiculo>(id).subscribe((veh) => {
+      this.vehiculos.splice(this.vehiculos.indexOf(veh))
+    })
+  }
+
 }

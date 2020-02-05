@@ -1,36 +1,45 @@
-<p>new-car works!</p>
-
-<form (ngSubmit)="onSubmitCrearVehiculo()" [formGroup]="crearVehiculoForm">
-    <div class="row">
-        <div class="col-md-2 mb-3">
-            <label>Marca</label>
-            <input type="text" class="form-control" id="marca" placeholder="" value="" required formControlName="marca">
-        </div>
-        <div class="col-md-2 mb-3">
-            <label>Modelo</label>
-            <input type="text" class="form-control" id="modelo" placeholder="" value="" required
-                formControlName="modelo">
-        </div>
-        <div class="col-md-2 mb-3">
-            <label>Patente</label>
-            <input type="text" class="form-control" id="patente" placeholder="" value="" required
-                formControlName="patente">
-        </div>
-        <div class="col-md-2 mb-3">
-            <label>Distancia maxima a recorrer</label>
-            <input type="text" class="form-control" id="distancia_maxima" placeholder="" value="" required
-                formControlName="distancia_maxima">
-        </div>
-        <div class="col-md-2 mb-3">
-            <label>Tipo de Vehiculo</label>
-            <select class="form-control" formControlName="tipo">
-                <option value="auto">Auto</option>
-                <option value="camioneta">Camioneta</option>
-                <option value="camion">Camion</option>
-            </select>
-        </div>
+<div class="jumbotron" style="margin:10px; background-color: #F5F5F5;">
+    <div class="container">
+        <h3>Agregar Vehiculo</h3>
+        <hr>
+        <form (ngSubmit)="onSubmitCrearVehiculo()" [formGroup]="crearVehiculoForm">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label>Marca</label>
+                    <input type="text" class="form-control" id="marca" placeholder="" value="" required
+                        formControlName="marca">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Modelo</label>
+                    <input type="text" class="form-control" id="modelo" placeholder="" value="" required
+                        formControlName="modelo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label>Patente</label>
+                    <input type="text" class="form-control" id="patente" placeholder="" value="" required
+                        formControlName="patente">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Distancia maxima a recorrer</label>
+                    <input type="text" class="form-control" id="distancia_maxima" placeholder="" value="" required
+                        formControlName="distancia_maxima">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label>Tipo de Vehiculo</label>
+                    <select class="form-control" formControlName="tipo">
+                        <option value="auto">Auto</option>
+                        <option value="camioneta">Camioneta</option>
+                        <option value="camion">Camion</option>
+                    </select>
+                </div>
+            </div>
+            <div style="padding: 10" class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-info">Agregar</button>
+            </div>
+        </form>
     </div>
-    <div style="padding: 10">
-        <button type="submit" class="btn btn-success">Agregar</button>
-    </div>
-</form>
+</div>

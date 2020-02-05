@@ -1,5 +1,3 @@
-<p>cars works!</p>
-
 <div>
     <button type="button" class="btn btn-info" (click)="irACrearVehiculo(voluntario.id)">Nuevo Vehiculo</button>
 </div>
@@ -24,7 +22,8 @@
         <th>{{veh.distancia_maxima}}</th>
         <th>{{veh.volumen}}</th>
         <th>
-            Botones
+          <button type="button" class="btn btn-info" (click)="editarVehiculo(veh.id)">Editar</button>
+          <button type="button" class="btn btn-danger" (click)="borrarVehiculo(veh.id)">Borrar</button>
         </th>
       </tr>
     </tbody>
