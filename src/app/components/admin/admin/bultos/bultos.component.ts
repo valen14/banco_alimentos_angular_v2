@@ -39,8 +39,8 @@ export class BultosComponent implements OnInit {
         this.bultosService.find({
           where: {
             and: [
-              {estado: "pendiente de retiro"},
-              {estado_traslado: "sin_asignar"}
+              { estado: "pendiente de retiro" },
+              { estado_traslado: "sin_asignar" }
             ]
           }
         }).subscribe((bultos) => { this.bultos = bultos })
@@ -49,8 +49,8 @@ export class BultosComponent implements OnInit {
         this.bultosService.find({
           where: {
             and: [
-              {estado: "pendiente de retiro"},
-              {estado_traslado: "asignado_vol"}
+              { estado: "pendiente de retiro" },
+              { estado_traslado: "asignado_vol" }
             ]
           }
         }).subscribe((bultos) => { this.bultos = bultos })
@@ -59,8 +59,8 @@ export class BultosComponent implements OnInit {
         this.bultosService.find({
           where: {
             and: [
-              {estado: "pendiente de retiro"},
-              {estado_traslado: "asignado_propio"}
+              { estado: "pendiente de retiro" },
+              { estado_traslado: "asignado_propio" }
             ]
           }
         }).subscribe((bultos) => { this.bultos = bultos })
@@ -76,7 +76,7 @@ export class BultosComponent implements OnInit {
         this.bultosService.find().subscribe((bultos) => {
           this.bultos = bultos;
         })
-        
+
     }
   }
 
@@ -89,16 +89,20 @@ export class BultosComponent implements OnInit {
     return razon_social
   }
 
-  confirmarTrasladoButtonClick() {
-    alert("A desarrollar")
+  confirmarTrasladoButtonClick(bulto: Bulto) {
+    this.bultosService.updateAttributes<Bulto>(bulto.id, { ...bulto, estado: "pendiente de carga" })
+      .subscribe((b) => {
+        this.bultos = []
+        this.cargarTabla()
+        alert("El bulto ahora esta disponible para cargar su contenido")
+       })
   }
 
   cargarContenidoButtonClick(id) {
     this.router.navigateByUrl('/admin/bultos/' + id + '/carga-paquetes')
   }
 
-  asignarTrasladoButtonClick(id){
-    console.log("A")
+  asignarTrasladoButtonClick(id) {
     this.router.navigateByUrl('/admin/envios/asignar/bulto/' + id)
   }
 

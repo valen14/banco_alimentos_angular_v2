@@ -24,7 +24,7 @@
           (click)="cargarContenidoButtonClick(bulto.id)">Cargar contenido</button>
         <button class="btn btn-info btn-small"
           *ngIf="(bulto.estado == 'pendiente de retiro') && (bulto.estado_traslado !== 'sin_asignar')"
-          (click)="confirmarTrasladoButtonClick()">Confirmar traslado</button>
+          (click)="confirmarTrasladoButtonClick(bulto)">Confirmar traslado</button>
         <button class="btn btn-info btn-small"
           *ngIf="(bulto.estado == 'pendiente de retiro') && (bulto.estado_traslado == 'sin_asignar')"
           (click)="asignarTrasladoButtonClick(bulto.id)">Asignar traslado</button>
