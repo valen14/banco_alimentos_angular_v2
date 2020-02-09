@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { Vehiculo, VehiculoApi, VoluntarioApi } from 'src/app/service/lbservice';
+import { Vehiculo, VehiculoApi } from 'src/app/service/lbservice';
 
 @Component({
   selector: 'app-new-car',
@@ -15,8 +15,7 @@ export class NewCarComponent implements OnInit {
 
   constructor(private ar: ActivatedRoute,
     private router: Router,
-    private vehiculoService: VehiculoApi,
-    private voluntarioService: VoluntarioApi  ) {
+    private vehiculoService: VehiculoApi ) {
     this.idVoluntario = this.ar.snapshot.params['id']
       this.crearVehiculoForm = new FormGroup({
         marca: new FormControl(),
@@ -39,16 +38,13 @@ export class NewCarComponent implements OnInit {
       marca : this.getForm().marca.value,
       modelo : this.getForm().modelo.value,
       patente : this.getForm().patente.value,
-      volumen : this.getForm().tipo.value,
       distancia_maxima : this.getForm().distancia_maxima.value,
+      volumen : this.getForm().tipo.value,
+      voluntarioId: this.idVoluntario,
     }
-    this.vehiculoService.create(veh).subscribe((auto)=>{
-      console.log(auto)
-        this.vehiculoService.updateAttributes(auto['id'], { ...auto, envioId: this.idVoluntario}).subscribe(()=>{
-          this.router.navigateByUrl("voluntario/cars")
-        }) 
-      })
-    
+    this.vehiculoService.create(veh).subscribe((newV) => {
+      this.router.navigateByUrl("voluntario/cars")
+    })
   }
 
 }
