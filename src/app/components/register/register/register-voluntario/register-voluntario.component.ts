@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
-import { VoluntarioApi, Voluntario } from 'src/app/service/lbservice';
+import { FormGroup, FormControl, EmailValidator } from '@angular/forms';
+import { VoluntarioApi, Voluntario, EmailApi } from 'src/app/service/lbservice';
+import { CursorError } from '@angular/compiler/src/ml_parser/lexer';
+import { Email } from 'src/app/service/lbservice';
 
 @Component({
   selector: 'app-register-voluntario',
@@ -10,8 +12,11 @@ import { VoluntarioApi, Voluntario } from 'src/app/service/lbservice';
 })
 export class RegisterVoluntarioComponent implements OnInit {
 
+  
   voluntarioForm: FormGroup
-  constructor(private router: Router, private voluntarioService: VoluntarioApi) {
+  constructor(private router: Router, 
+    private voluntarioService: VoluntarioApi,
+    private emailService: EmailApi) {
     this.voluntarioForm = new FormGroup({
       nombre: new FormControl(),
       dni: new FormControl(),
@@ -25,6 +30,7 @@ export class RegisterVoluntarioComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 
   onSubmit() {
@@ -47,6 +53,23 @@ export class RegisterVoluntarioComponent implements OnInit {
     this.voluntarioService.create(voluntario).subscribe(() => {
       this.router.navigateByUrl('')
     })
+    this.enviarEmail(voluntario.email)
   }
+
+
+private enviarEmail(toEmail:string){
+
+  const email={
+    to: toEmail,
+    from: 'vccarp@gmail.com',
+    subject: 'my subject',
+    text: 'my text',
+    html: 'my <em>html</em>'
+  }
+  this.emailService.create(email).subscribe(()=>{
+ 
+  })
+}
+
 
 }
