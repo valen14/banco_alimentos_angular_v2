@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
-import { OrganizacionDonanteApi } from 'src/app/service/lbservice';
+import { FormGroup, FormControl, } from '@angular/forms';
+import { OrganizacionDonanteApi, } from 'src/app/service/lbservice';
+import { HttpService } from 'src/app/components/shared/http.service';
 
 @Component({
   selector: 'app-register-donante',
@@ -11,7 +12,8 @@ import { OrganizacionDonanteApi } from 'src/app/service/lbservice';
 export class RegisterDonanteComponent implements OnInit {
 
   donanteForm: FormGroup
-  constructor(private router: Router, private donanteService: OrganizacionDonanteApi) {
+  constructor(private router: Router, private donanteService: OrganizacionDonanteApi, 
+    private httpService: HttpService) {
     this.donanteForm = new FormGroup({
       razonSocial: new FormControl(),
       cuil: new FormControl(),
@@ -45,5 +47,31 @@ export class RegisterDonanteComponent implements OnInit {
     this.donanteService.create(donante).subscribe(() => {
       this.router.navigateByUrl('/home')
     })
+    this.enviarEmail(donante.razon_social,donante.email)
   }
+
+
+
+
+
+public enviarEmail(razonSocial:string,email:string) {
+
+  var user = {
+    razonSocial: razonSocial,
+    email: email
+  }
+  this.httpService.sendEmail("http://localhost:3000/sendmail", user).subscribe(
+      data => {
+        let res:any = data; 
+        console.log(
+          `👏 > 👏 > 👏 > 👏 ${user.razonSocial} is successfully register and mail has been sent and the message id is ${res.messageId}`
+        );
+      },
+      err => {
+        console.log(err);
+      }
+    );
+}
+
+
 }
