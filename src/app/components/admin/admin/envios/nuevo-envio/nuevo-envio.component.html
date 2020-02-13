@@ -35,7 +35,7 @@
         </div>
 
         <select class="custom-select d-block w-100" id="country" required formControlName="orgBeneficiaria">
-            <option *ngFor="let ben of orgBeneficiarias" value="{{ben.id}}">
+            <option *ngFor="let ben of orgBeneficiarias" value="{{ben.id}}"  (click)="seleccionarBeneficiario(ben)">
                 {{ben.nombre}}</option>
         </select>
 

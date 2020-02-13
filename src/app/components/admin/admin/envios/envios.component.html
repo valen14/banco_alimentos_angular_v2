@@ -33,7 +33,7 @@
           {{obtenerVoluntarioAsignado(envio)}}
        </th>
        <th *ngIf="filter !== 'sin-asignar'">
-         {{obtenerOrganizacionBeneficiaria(envio.id)}}
+         {{obtenerOrganizacionBeneficiaria(envio)}}
       </th>
         <th *ngIf="filter == 'sin-asignar'">
           <button class="btn btn-danger btn-xs fa fa-trash-o" (click)="borrarEnvioButtonClick(envio.id)"></button>

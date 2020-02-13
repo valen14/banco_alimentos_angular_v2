@@ -12,8 +12,6 @@ import { SeleccionPaquetesComponent } from './admin/envios/nuevo-envio/seleccion
 import { CargaPaquetesComponent } from './admin/carga-paquetes/carga-paquetes.component';
 import { PaquetesComponent } from './admin/paquetes/paquetes.component';
 import { AsignarUnEnvioComponent } from './admin/envios/asignar-un-envio/asignar-un-envio.component';
-import { SeleccionBeneficiarioComponent } from './admin/envios/nuevo-envio/seleccion-beneficiario/seleccion-beneficiario.component';
-
 
 const routes: Routes = [
   {
@@ -27,8 +25,7 @@ const routes: Routes = [
       { path: 'envios/:filter', component: EnviosComponent, },
       { path: 'envios/asignar/:type/:id', component:  AsignarUnEnvioComponent},
       { path: 'envios/:parametro/nuevo-envio', component: NuevoEnvioComponent },
-      { path: 'envios/nuevo-envio/seleccion-paquetes', component: SeleccionPaquetesComponent },
-      { path: 'envios/nuevo-envio/seleccion-beneficiario', component: SeleccionBeneficiarioComponent },
+      { path: 'envios/nuevo-envio/seleccion-paquetes', component: SeleccionPaquetesComponent }
       { path: 'envios/:id/asignar-traslado', component: EnvioComponent },
     
       

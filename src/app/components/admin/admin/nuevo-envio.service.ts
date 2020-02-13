@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EnvioApi, Envio, Paquete, PaqueteApi } from 'src/app/service/lbservice';
+import { EnvioApi, Envio, Paquete, PaqueteApi, OrganizacionBeneficiaria } from 'src/app/service/lbservice';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,8 @@ export class NuevoEnvioService {
 
   setBeneficiario(bene: any){
     this.beneficiario=bene
+    console.log("beneficiario:")
+    console.log(bene.id)
   }
 
   createEnvio(){
@@ -39,7 +41,7 @@ export class NuevoEnvioService {
         organizacionBeneficiariaId: this.beneficiario.id
       }
     
-    this.envioService.create(this.envio).subscribe((envio)=>{
+    this.envioService.create(nuevoEnvio).subscribe((envio)=>{
         this.paquetes.forEach((paq) => {
           this.paqueteService.updateAttributes(paq.id, { ...paq, envioId: this.id} ).subscribe((paq) => {
           })

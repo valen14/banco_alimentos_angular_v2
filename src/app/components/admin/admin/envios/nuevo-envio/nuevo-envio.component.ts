@@ -14,6 +14,7 @@ export class NuevoEnvioComponent implements OnInit {
 
   envioForm: FormGroup
   orgBeneficiarias: OrganizacionBeneficiaria[]
+  beneficiario
 
   constructor(private router: Router, 
     private envioService:EnvioApi,
@@ -36,7 +37,9 @@ export class NuevoEnvioComponent implements OnInit {
   }
 
   onSubmit(){
-    this.nuevoEnvioService.setEnvio(this.crearEnvio()) 
+    this.nuevoEnvioService.setEnvio(this.crearEnvio())
+    console.log(this.beneficiario) 
+    this.nuevoEnvioService.setBeneficiario(this.beneficiario)
     this.router.navigateByUrl('admin/envios/nuevo-envio/seleccion-paquetes')  
   }
 
@@ -56,6 +59,10 @@ export class NuevoEnvioComponent implements OnInit {
       estado: 'pendiente de retiro',
       estado_traslado: "sin_asignar"
     }
+  }
+
+  seleccionarBeneficiario(beneficiario: any){
+    this.beneficiario=beneficiario
   }
 
   cancelar(){

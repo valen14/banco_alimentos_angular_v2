@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EnvioApi, Envio, VoluntarioApi } from 'src/app/service/lbservice';
+import { EnvioApi, Envio, VoluntarioApi, OrganizacionBeneficiariaApi } from 'src/app/service/lbservice';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -13,13 +13,19 @@ export class EnviosComponent implements OnInit {
   envios = []
   voluntarios = []
   envioCantidadPaq = []
+  beneficiarios=[]
   constructor(private ar: ActivatedRoute,
     private router: Router,
-    private envioService: EnvioApi, private voluntarioService: VoluntarioApi) {
+    private envioService: EnvioApi, 
+    private voluntarioService: VoluntarioApi,
+    private beneficiarioService: OrganizacionBeneficiariaApi) {
 
     this.voluntarioService.find().subscribe((voluntarios) => {
       console.log(voluntarios)
       this.voluntarios = voluntarios
+    })
+    this.beneficiarioService.find().subscribe((beneficiarios)=>{
+      this.beneficiarios=beneficiarios
     })
 
   }
@@ -135,7 +141,18 @@ export class EnviosComponent implements OnInit {
     return nombre
   }
 
-  obtenerOrganizacionBeneficiaria(id: any) { }
+  obtenerOrganizacionBeneficiaria(envio: any) {
+    const idBene= envio.organizacionBeneficiariaId
+    var nombre = ""
+    if(idBene !== null){
+      console.log(idBene)
+      this.beneficiarios.forEach((bene)=>{
+        if(idBene==bene.id)
+          nombre= bene.nombre
+      })
+    }
+    return nombre
+   }
 
   asignarTrasladoButtonClick(id) {
     this.router.navigateByUrl('/admin/envios/asignar/envio/' + id) 
