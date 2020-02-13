@@ -24,25 +24,25 @@ export class DonacionesComponent implements OnInit {
     private beneficiarioService: OrganizacionBeneficiariaApi) {
     const emailUserLog = sessionStorage.getItem('email')
     this.beneficiarioService.findOne<OrganizacionBeneficiaria>({ where: { email: emailUserLog } }).subscribe((beneficiario) => {
-      console.log(beneficiario)
       this.beneficiario = beneficiario
-    })
-    this.ar.paramMap.subscribe((params) => {
-      this.filter = params.get('filter')
-      if (this.filter == "pendiente-de-carga") {
-        this.filter = "pendiente de carga"
-      }
-      this.cargarTabla()
+      this.ar.paramMap.subscribe((params) => {
+        this.filter = params.get('filter')
+        if (this.filter == "pendiente-de-retiro") {
+          this.filter = "pendiente de retiro"
+        }
+        this.cargarTabla()
+      })
     })
   }
 
   private cargarTabla() {
 
     console.log(this.filter)
+    console.log(this.beneficiario)
     this.envioService.find<Envio>({
       where: {
         estado: this.filter,
-        beneficiarioId: this.beneficiario.id
+        organizacionBeneficiariaId: this.beneficiario.id
       }
     }).subscribe((envios) => {
       console.log(envios)
