@@ -34,7 +34,8 @@ export class SeleccionPaquetesComponent implements OnInit {
 
   confirmarSeleccionPaquetes(){
 
-    this.nuevoEnvioService.createEnvio(this.paquetesSeleccionados)
+    this.nuevoEnvioService.setPaquetes(this.paquetesSeleccionados)
+    this.nuevoEnvioService.createEnvio()
     //console.log(this.nuevoEnvioService.getEnvio())
     this.router.navigateByUrl('admin/envios/todos')
 
@@ -72,6 +73,12 @@ export class SeleccionPaquetesComponent implements OnInit {
     this.paquetesSeleccionados.push(paquete)
     this.paquetes=this.paquetes.filter(p=>p.id!==paquete.id)
     console.log(this.paquetes)
+  }
+
+  borrarPaqueteButtonClick(paquete: Paquete,id: any){
+    this.paquetes.push(paquete)
+    this.paquetesSeleccionados=this.paquetesSeleccionados.filter(p=>p.id!==paquete.id)
+    console.log(this.paquetesSeleccionados)
   }
   
 

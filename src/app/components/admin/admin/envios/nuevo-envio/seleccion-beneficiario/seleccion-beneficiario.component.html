@@ -12,13 +12,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let paquete of paquetes; let idx=index">
-        <th>{{paquete.codigo}}</th>
-        <th>{{paquete.ubicacion}}</th>
-        <th>{{paquete.peso}}</th>
-        <th>{{paquete.fecha_vencimiento}}</th>
+      <tr *ngFor="let beneficiario of beneficiarios; let idx=index">
+        <th>{{beneficiario.codigo}}</th>
+        <th>{{beneficiario.ubicacion}}</th>
+        <th>{{beneficiario.peso}}</th>
+        <th>{{beneficiario.fecha_vencimiento}}</th>
         <th>
-          <button class="btn btn-info btn-small" (click)="seleccionarPaqueteButtonClick(paquete,idx)">Agregar</button>
+          <button class="btn btn-info btn-small" (click)="seleccionarBeneficiarioButtonClick(beneficiario,idx)">Agregar</button>
         </th> 
         <th>
           
@@ -28,7 +28,7 @@
   </table>
 
   <table class="table">
-    <caption>Paquetes Seleccionados:</caption>
+    <caption>Beneficiario Seleccionado:</caption>
     <thead>
       <tr>
         <th scope="col">Codigo</th>
@@ -36,22 +36,20 @@
         <th scope="col">Peso</th>
         <th scope="col">Fecha de Vencimiento</th>
        <!-- <th scope="col">Tipo de Alimento</th> -->
+        <th scope="col"> Asignado a Envio</th>
       </tr>
     </thead>
     <tbody
     >
-      <tr *ngFor="let paquete of paquetesSeleccionados">
-        <th>{{paquete.codigo}}</th>
-        <th>{{paquete.ubicacion}}</th>
-        <th>{{paquete.peso}}</th>
-        <th>{{paquete.fecha_vencimiento}}</th>
-        <th>
-          <button class="btn btn-info btn-small" (click)="borrarPaqueteButtonClick(paquete,idx)" > cancelar </button>
-        </th>
+      <tr>
+        <th>{{beneficiario.codigo}}</th>
+        <th>{{beneficiario.ubicacion}}</th>
+        <th>{{beneficiario.peso}}</th>
+        <th>{{beneficiario.fecha_vencimiento}}</th>
       </tr>
     </tbody>
   </table>
-  <button class="btn btn-lg btn-primary btn-block" (click)="confirmarSeleccionPaquetes()" >Confirmar Paquetes</button>
+  <button class="btn btn-lg btn-primary btn-block" (click)="confirmarSeleccionBeneficiario()" >Confirmar Carga</button>
   <button class="btn btn-lg btn-primary btn-block" (click)="atras()" >Atras</button>
   <button class="btn btn-lg btn-primary btn-block" (click)="cancelar()" >Cancelar</button>
  

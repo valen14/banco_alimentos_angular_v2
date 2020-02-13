@@ -47,7 +47,7 @@ export class RegisterDonanteComponent implements OnInit {
     this.donanteService.create(donante).subscribe(() => {
       this.router.navigateByUrl('/home')
     })
-    this.enviarEmail(donante.razon_social,donante.email)
+    //this.enviarEmail(donante.razon_social,donante.email)
   }
 
 
