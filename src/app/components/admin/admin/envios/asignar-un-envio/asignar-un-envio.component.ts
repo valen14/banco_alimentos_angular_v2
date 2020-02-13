@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BultoApi, EnvioApi, Bulto, Envio, VoluntarioApi, Voluntario, VehiculoApi, Vehiculo, AsignacionTrasladoBulto, AsignacionTrasladoBultoApi, AsignacionEnvioApi } from 'src/app/service/lbservice';
+import { HttpService } from 'src/app/components/shared/http.service';
 
 @Component({
   selector: 'app-asignar-un-envio',
@@ -20,7 +21,8 @@ export class AsignarUnEnvioComponent implements OnInit {
     private envioService: EnvioApi,
     private voluntarioService: VoluntarioApi,
     private asignacionBultoService: AsignacionTrasladoBultoApi,
-    private asignacionEnvioService: AsignacionEnvioApi) {
+    private asignacionEnvioService: AsignacionEnvioApi,
+    private httpService: HttpService) {
 
     this.id = this.ar.snapshot.params['id']
     this.type = this.ar.snapshot.params['type']
@@ -91,6 +93,8 @@ export class AsignarUnEnvioComponent implements OnInit {
     // ACA ENVIAR MAIL
     // EN vol.email ESTA LA DIRECCION DONDE ENVIAR
     // EN this.type ESTA SI ES UN BULTO O UN ENVIO
+
+    this.enviarEmail(vol.nombre,vol.email)
   }
 
   asignarPropio() {
@@ -105,6 +109,25 @@ export class AsignarUnEnvioComponent implements OnInit {
         this.router.navigateByUrl('/admin/envios/sin-traslado')
       })
     }
+  }
+
+  public enviarEmail(name:string,email:string) {
+
+    var user = {
+      name: name,
+      email: email
+    }
+    this.httpService.sendEmail("http://localhost:3000/sendmail", user).subscribe(
+        data => {
+          let res:any = data; 
+          console.log(
+            `👏 > 👏 > 👏 > 👏 ${user.name} is successfully register and mail has been sent and the message id is ${res.messageId}`
+          );
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
 
 }
