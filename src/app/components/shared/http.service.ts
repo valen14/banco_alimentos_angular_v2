@@ -14,7 +14,7 @@ export class HttpService {
   }
 
   httpPost(url, {}) {
-    return this.http.post(url, { razonSocial: "Subrat" });
+    return this.http.post(url, { name: "Subrat" });
   }
 
   sendEmail(url, data) {
