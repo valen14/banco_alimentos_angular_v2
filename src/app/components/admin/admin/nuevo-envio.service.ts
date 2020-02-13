@@ -41,7 +41,7 @@ export class NuevoEnvioService {
     
     this.envioService.create(nuevoEnvio).subscribe((envio)=>{
         this.paquetes.forEach((paq) => {
-          this.paqueteService.updateAttributes(paq.id, { ...paq, envioId: this.id} ).subscribe((paq) => {
+          this.paqueteService.updateAttributes(paq.id, { ...paq, envioId: envio.id} ).subscribe((paq) => {
           })
         })
     })

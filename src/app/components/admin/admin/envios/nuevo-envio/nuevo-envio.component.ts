@@ -67,12 +67,6 @@ export class NuevoEnvioComponent implements OnInit {
     }
   }
 
-  seleccionarBeneficiario(beneficiario: any){
-    console.log("seleccionarBeneficiario")
-
-    this.beneficiario=beneficiario
-  }
-
   cancelar(){
     this.router.navigateByUrl("admin/envios/todos")
   }
