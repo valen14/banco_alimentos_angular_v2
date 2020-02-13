@@ -62,6 +62,7 @@ export class NuevoEnvioComponent implements OnInit {
   }
 
   seleccionarBeneficiario(beneficiario: any){
+    console.log(beneficiario)
     this.beneficiario=beneficiario
   }
 
