@@ -4,22 +4,44 @@
     <h4>Nuevo Envio</h4>
     <form class="form-signin" (ngSubmit)="onSubmit()" [formGroup]="envioForm">
         <h5 class="h3 mb-3 font-weight-normal">Por favor, complete los siguientes campos</h5>
-        
+
         <label for="inputEmail" class="sr-only">Descripcion</label>
-        <input type="descripcion" id="inputDesc" class="form-control" placeholder="Descripcion" required autofocus formControlName="descripcion">
-        
+        <input type="descripcion" id="inputDesc" class="form-control" placeholder="Descripcion" required autofocus
+            formControlName="descripcion">
+
         <label class="sr-only">Fecha Maxima</label>
-        <input type="fecha_maxima" id="inputFechaMaxima" class="form-control" placeholder="Fecha de Maxima" required autofocus formControlName="fecha_maxima">
-        
+        <input type="fecha_maxima" id="inputFechaMaxima" class="form-control" placeholder="Fecha de Maxima" required
+            autofocus formControlName="fecha_maxima">
+
         <label class="sr-only">Fecha Traslado</label>
-        <input type="fecha_traslado" id="inputFechaTraslado" class="form-control" placeholder="Fecha de Traslado" required autofocus formControlName="fecha_traslado">
-        
+        <input type="fecha_traslado" id="inputFechaTraslado" class="form-control" placeholder="Fecha de Traslado"
+            required autofocus formControlName="fecha_traslado">
+
         <label class="sr-only">Comentario Traslado</label>
-        <input type="comentario_traslado" id="inputComentario" class="form-control" placeholder="Comentario del Traslado" required autofocus formControlName="comentario_traslado">
-        
+        <input type="comentario_traslado" id="inputComentario" class="form-control"
+            placeholder="Comentario del Traslado" required autofocus formControlName="comentario_traslado">
+
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck1" formControlName="auto">
+            <label class="custom-control-label" for="customCheck1">Auto</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck1" formControlName="camioneta">
+            <label class="custom-control-label" for="customCheck1">Camioneta</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck1" formControlName="camion">
+            <label class="custom-control-label" for="customCheck1">Camion</label>
+        </div>
+
+        <select class="custom-select d-block w-100" id="country" required formControlName="orgBeneficiaria">
+            <option *ngFor="let ben of orgBeneficiarias" value="{{ben.id}}">
+                {{ben.nombre}}</option>
+        </select>
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">Seleccionar Paquetes</button>
-        <button class="btn btn-lg btn-primary btn-block" (click)="cancelar()" >Cancelar</button>
-        
+        <button class="btn btn-lg btn-primary btn-block" (click)="cancelar()">Cancelar</button>
+
     </form>
 </body>
 

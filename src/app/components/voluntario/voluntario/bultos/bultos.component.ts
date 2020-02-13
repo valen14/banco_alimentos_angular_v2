@@ -78,12 +78,12 @@ export class BultosComponent implements OnInit {
   rechazarAsignacion(asig) {
     this.asignacionesService.updateAttributes(asig.id, {...asig, estado: "rechazado"}).subscribe(() => {
       console.log("Se rechazo la solicitud")
+      this.asignaciones = []
+      this.obtenerAsignaciones()
     })
     this.bultoService.updateAttributes(asig.bulto.id, {...asig.bulto, estado_traslado: "sin_asignar"}).subscribe(() => {
       console.log("El bulto esta de nuevo sin asignar")
     })
-    this.asignaciones = []
-    this.obtenerAsignaciones()
     // ENVIAR MAIL A ADMINISTRADOR??
   }
 

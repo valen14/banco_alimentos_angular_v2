@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EnvioApi, VoluntarioApi, Envio } from 'src/app/service/lbservice';
+import { EnvioApi, VoluntarioApi, Envio, Voluntario, AsignacionEnvioApi, AsignacionEnvio } from 'src/app/service/lbservice';
 
 @Component({
   selector: 'app-envios',
@@ -8,68 +8,68 @@ import { EnvioApi, VoluntarioApi, Envio } from 'src/app/service/lbservice';
   styleUrls: ['./envios.component.css']
 })
 export class EnviosComponent implements OnInit {
-  idUserLog
+  
+  voluntario: Voluntario
   filter: String
   envios = []
-  //enviosVisualizados=[]
   voluntarios=[]
+  asignaciones : AsignacionEnvio[]
 
   constructor(private ar: ActivatedRoute,
     private router: Router,
-    private envioService: EnvioApi, private voluntarioService: VoluntarioApi) { 
+    private envioService: EnvioApi, 
+    private voluntarioService: VoluntarioApi,
+    private asignacionesService: AsignacionEnvioApi) { 
       const emailUserLog= sessionStorage.getItem('email')
-      this.voluntarioService.findOne({where:{email: emailUserLog}}).subscribe((voluntario) => {
-        console.log(voluntario)
-        this.idUserLog=voluntario['id']    
-        this.obtenerEnvios()
+      this.voluntarioService.findOne<Voluntario>({where:{email: emailUserLog}}).subscribe((voluntario) => {
+        this.voluntario = voluntario 
+        this.ar.paramMap.subscribe((params) => {
+          this.filter = params.get('filter')
+          this.obtenerAsignaciones()
+        })
       })
     }
 
-    private obtenerEnvios(){
-      //this.filter = this.ar.snapshot.params['filter']
-      this.ar.paramMap.subscribe((params) => {
-        this.filter = params.get('filter')
-        console.log(this.filter)
-      })
-      this.voluntarioService.getEnvios(this.idUserLog).subscribe((envios) => {
-        console.log(envios),
-        this.envios = envios
-      })
-      switch(this.filter){
-        case 'todos': 
-          //hacer
-          break
-        case 'solicitudes':
-    
-          break
-        case 'aceptados':
-    
-          break
-        case 'denegados':
-    
-          break
+    private obtenerAsignaciones(){
+      this.asignacionesService.find<AsignacionEnvio>({
+        where: {
+          estado: this.filter,
+          voluntarioId: this.voluntario.id
+        },
+        include: {
+          relation: "envio"
         }
+      }).subscribe((asignaciones) => {
+        console.log(asignaciones)
+        this.asignaciones = asignaciones
+      })
     
 
     }
 
   ngOnInit() {
-    /*this.filter = this.ar.snapshot.params['filter']
-    console.log(this.filter)
-    this.ar.paramMap.subscribe((params) => {
-      //this.filter = params.get('filter')
-      this.cargarTabla()
-    }) */
   }
 
 
-  verEnvioButtonClick(id: any) {
-    alert("a desarrollar")
-    //this.router.navigateByUrl('/admin/envios/' + id + '/asignar-voluntario') 
+  aceptarAsignacion(asig) {
+    this.asignacionesService.updateAttributes(asig.id, {...asig, estado:"aceptado"}).subscribe(() => {
+      console.log("Se acepto el traslado")
+      this.asignaciones = []
+      this.obtenerAsignaciones()
+    })
   }
 
-  obtenerOrganizacionBeneficiaria(envio: Envio) {
-    alert("a desarrollar")
+
+  rechazarAsignacion(asig) {
+    this.asignacionesService.updateAttributes(asig.id, {...asig, estado:"rechazado"}).subscribe(() => {
+      console.log("Se rechazo el traslado")
+      this.asignaciones = []
+      this.obtenerAsignaciones()
+    })
+    this.envioService.updateAttributes(asig.envio.id, {...asig.envio, estado_traslado:"sin_asignar"}).subscribe(() => {
+      console.log("El bulto esta de nuevo sin asignar")
+    })
+    //ENVIAR MAIL A ADMIN?
   }
 
 }

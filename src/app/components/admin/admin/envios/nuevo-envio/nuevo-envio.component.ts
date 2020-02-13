@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EnvioApi } from 'src/app/service/lbservice';
+import { EnvioApi, OrganizacionBeneficiaria, OrganizacionBeneficiariaApi } from 'src/app/service/lbservice';
 import { NuevoEnvioService } from 'src/app/components/admin/admin/nuevo-envio.service';
 import { filter } from 'rxjs/operators';
 
@@ -13,16 +13,23 @@ import { filter } from 'rxjs/operators';
 export class NuevoEnvioComponent implements OnInit {
 
   envioForm: FormGroup
+  orgBeneficiarias: OrganizacionBeneficiaria[]
 
   constructor(private router: Router, 
     private envioService:EnvioApi,
-    private nuevoEnvioService: NuevoEnvioService) {
+    private nuevoEnvioService: NuevoEnvioService,
+    private orgBeneficiariaService: OrganizacionBeneficiariaApi) {
     this.envioForm = new FormGroup ({
       descripcion: new FormControl(),
       fecha_maxima: new FormControl(),
       fecha_traslado: new FormControl(),
       comentario_traslado: new FormControl(),
+      auto: new FormControl(),
+      camioneta: new FormControl(),
+      camion: new FormControl(),
+      orgBeneficiaria: new FormControl(),
     })
+    this.orgBeneficiariaService.find<OrganizacionBeneficiaria>().subscribe((res) => this.orgBeneficiarias = res)
    }
 
   ngOnInit() {
