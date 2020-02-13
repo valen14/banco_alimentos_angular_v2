@@ -26,16 +26,16 @@
             <label class="custom-control-label" for="customCheck1">Auto</label>
         </div>
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck1" formControlName="camioneta">
-            <label class="custom-control-label" for="customCheck1">Camioneta</label>
+            <input type="checkbox" class="custom-control-input" id="customCheck2" formControlName="camioneta">
+            <label class="custom-control-label" for="customCheck2">Camioneta</label>
         </div>
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck1" formControlName="camion">
-            <label class="custom-control-label" for="customCheck1">Camion</label>
+            <input type="checkbox" class="custom-control-input" id="customCheck3" formControlName="camion">
+            <label class="custom-control-label" for="customCheck3">Camion</label>
         </div>
 
-        <select class="custom-select d-block w-100" id="country" required formControlName="orgBeneficiaria">
-            <option *ngFor="let ben of orgBeneficiarias" value="{{ben.id}}"  (click)="seleccionarBeneficiario(ben)">
+        <select class="custom-select d-block w-100" id="country" required formControlName="orgBeneficiaria" >
+            <option *ngFor="let ben of orgBeneficiarias" value="{{ben.id}}">
                 {{ben.nombre}}</option>
         </select>
 

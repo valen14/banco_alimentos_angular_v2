@@ -20,10 +20,8 @@ export class NuevoEnvioService {
     this.paquetes=paquetes
   }
 
-  setBeneficiario(bene: any){
-    this.beneficiario=bene
-    console.log("beneficiario:")
-    console.log(bene.id)
+  setBeneficiario(beneId: any){
+    this.beneficiario=beneId
   }
 
   createEnvio(){
@@ -38,7 +36,7 @@ export class NuevoEnvioService {
         fecha_asignacion: this.envio.fecha_asignacion,
         estado: this.envio.estado,
         estado_traslado: this.envio.estado_traslado,
-        organizacionBeneficiariaId: this.beneficiario.id
+        organizacionBeneficiariaId: this.beneficiario
       }
     
     this.envioService.create(nuevoEnvio).subscribe((envio)=>{
