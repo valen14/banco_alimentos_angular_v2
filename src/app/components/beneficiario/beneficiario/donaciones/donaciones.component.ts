@@ -3,6 +3,7 @@ import { Envio } from 'src/app/service/lbservice/models/Envio';
 import { OrganizacionBeneficiariaApi } from 'src/app/service/lbservice/services/custom/OrganizacionBeneficiaria';
 import { OrganizacionBeneficiaria, EnvioApi } from 'src/app/service/lbservice';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Beneficiario } from 'src/app/model/beneficiario';
 
 @Component({
   selector: 'app-donaciones',
@@ -11,53 +12,52 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DonacionesComponent implements OnInit {
 
-  idUserLog
+  beneficiario: OrganizacionBeneficiaria
   filter: String
   envios = []
   //enviosVisualizados=[]
-  beneficiarios=[]
+  beneficiarios = []
 
   constructor(private ar: ActivatedRoute,
     private router: Router,
-    private envioService: EnvioApi, 
-    private beneficiarioService: OrganizacionBeneficiariaApi) { 
-      const emailUserLog= sessionStorage.getItem('email')
-      this.beneficiarioService.findOne({where:{email: emailUserLog}}).subscribe((beneficiario) => {
-        console.log(beneficiario)
-        this.idUserLog=beneficiario['id']    
-        this.obtenerEnvios()
-      })
-    }
-
-    private obtenerEnvios(){
-      this.filter = this.ar.snapshot.params['filter']
-      console.log(this.filter)
-  
-      this.beneficiarioService.getEnvios(this.idUserLog).subscribe((envios) => {
-        console.log(envios),
-        this.envios = envios
-      })
-      switch(this.filter){
-        case 'todos': 
-          //hacer
-          break
-        case 'pendientes':
-    
-          break
-        case 'concretados':
-    
-          break
+    private envioService: EnvioApi,
+    private beneficiarioService: OrganizacionBeneficiariaApi) {
+    const emailUserLog = sessionStorage.getItem('email')
+    this.beneficiarioService.findOne<OrganizacionBeneficiaria>({ where: { email: emailUserLog } }).subscribe((beneficiario) => {
+      this.beneficiario = beneficiario
+      this.ar.paramMap.subscribe((params) => {
+        this.filter = params.get('filter')
+        if (this.filter == "pendiente-de-retiro") {
+          this.filter = "pendiente de retiro"
         }
-    
+        this.cargarTabla()
+      })
+    })
+  }
 
-    }
+  private cargarTabla() {
+
+    console.log(this.filter)
+    console.log(this.beneficiario)
+    this.envioService.find<Envio>({
+      where: {
+        estado: this.filter,
+        organizacionBeneficiariaId: this.beneficiario.id
+      }
+    }).subscribe((envios) => {
+      console.log(envios)
+      this.envios = envios
+    })
+
+
+  }
 
   ngOnInit() {
 
     /*this.ar.paramMap.subscribe((params) => {
       //this.filter = params.get('filter')
       this.cargarTabla()
-    })*/ 
+    })*/
   }
 
 
@@ -68,6 +68,14 @@ export class DonacionesComponent implements OnInit {
 
   obtenerOrganizacionBeneficiaria(envio: Envio) {
     alert("a desarrollar")
+  }
+
+  confirmarTrasladoButtonClick(envio) {
+    this.envioService.updateAttributes(envio.id, {...envio, estado:"realizado"}).subscribe(() => {
+      console.log("Se conformo el trasaldo")
+      this.envios = []
+      this.cargarTabla()
+    })
   }
 
 

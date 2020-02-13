@@ -38,8 +38,7 @@ export class NuevoEnvioComponent implements OnInit {
 
   onSubmit(){
     this.nuevoEnvioService.setEnvio(this.crearEnvio())
-    console.log(this.beneficiario) 
-    this.nuevoEnvioService.setBeneficiario(this.beneficiario)
+    this.nuevoEnvioService.setBeneficiario(this.envioForm.get("orgBeneficiaria").value)
     this.router.navigateByUrl('admin/envios/nuevo-envio/seleccion-paquetes')  
   }
 
@@ -48,22 +47,24 @@ export class NuevoEnvioComponent implements OnInit {
     const fechaMaximaForm= this.envioForm.get('fecha_maxima').value
     const fechaTrasladoForm= this.envioForm.get('fecha_traslado').value
     const comentarioTrasladoForm= this.envioForm.get('comentario_traslado').value
+    const auto= this.envioForm.get('auto').value
+    const camioneta= this.envioForm.get('camioneta').value
+    const camion= this.envioForm.get('camion').value
+    let vehiculos = []
+    if(auto) {vehiculos.push("auto")}
+    if(camioneta) {vehiculos.push("camioneta")}
+    if(camion) {vehiculos.push("camion")}
     return {
       descripcion: descripcionForm,
       peso: 0,
-      volumen: [0,0],
       fecha_maxima: new Date(),
       fecha_disponibilidad: new Date(),
       comentario_traslado: comentarioTrasladoForm,
       fecha_asignacion: new Date(),
       estado: 'pendiente de retiro',
-      estado_traslado: "sin_asignar"
+      estado_traslado: "sin_asignar",
+      volumen: vehiculos,
     }
-  }
-
-  seleccionarBeneficiario(beneficiario: any){
-    console.log(beneficiario)
-    this.beneficiario=beneficiario
   }
 
   cancelar(){
