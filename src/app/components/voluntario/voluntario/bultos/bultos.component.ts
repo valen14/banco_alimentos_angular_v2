@@ -18,7 +18,8 @@ export class BultosComponent implements OnInit {
     private router: Router,
     private voluntarioService: VoluntarioApi,
     private asignacionesService: AsignacionTrasladoBultoApi,
-    private donantesService: OrganizacionDonanteApi) {
+    private donantesService: OrganizacionDonanteApi,
+    private bultoService: BultoApi) {
     const emailUserLog = sessionStorage.getItem('email')
     this.filter = this.ar.snapshot.params['filter']
     this.donantesService.find().subscribe((donantes) => {
@@ -28,7 +29,7 @@ export class BultosComponent implements OnInit {
       this.voluntario = voluntario
       this.ar.paramMap.subscribe((params) => {
         this.filter = params.get('filter')
-        this.obtenerBultos()
+        this.obtenerAsignaciones()
       })
 
     })
@@ -37,8 +38,7 @@ export class BultosComponent implements OnInit {
   ngOnInit() {
   }
 
-  obtenerBultos() {
-    console.log("Obtiene bultos")
+  obtenerAsignaciones() {
     this.asignacionesService.find<AsignacionTrasladoBulto>({
       where: {
         voluntarioId: this.voluntario.id,
@@ -68,11 +68,23 @@ export class BultosComponent implements OnInit {
   }
 
   aceptarAsignacion(asig) {
-    alert("A desarrollar")
+    this.asignacionesService.updateAttributes(asig.id, {...asig, estado: "aceptado"}).subscribe(() => {
+      console.log("Se acepto la solicitud")
+    })
+    this.asignaciones = []
+    this.obtenerAsignaciones()
   }
 
   rechazarAsignacion(asig) {
-    alert("A desarrollar")
+    this.asignacionesService.updateAttributes(asig.id, {...asig, estado: "rechazado"}).subscribe(() => {
+      console.log("Se rechazo la solicitud")
+    })
+    this.bultoService.updateAttributes(asig.bulto.id, {...asig.bulto, estado_traslado: "sin_asignar"}).subscribe(() => {
+      console.log("El bulto esta de nuevo sin asignar")
+    })
+    this.asignaciones = []
+    this.obtenerAsignaciones()
+    // ENVIAR MAIL A ADMINISTRADOR??
   }
 
 }

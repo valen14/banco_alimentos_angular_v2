@@ -88,7 +88,7 @@ export class AsignarUnEnvioComponent implements OnInit {
         this.router.navigateByUrl('/admin/envios/sin-traslado')
       })
     }
-    //ACA ENVIAR MAIL
+    // ACA ENVIAR MAIL
     // EN vol.email ESTA LA DIRECCION DONDE ENVIAR
     // EN this.type ESTA SI ES UN BULTO O UN ENVIO
   }
@@ -100,7 +100,6 @@ export class AsignarUnEnvioComponent implements OnInit {
         this.router.navigateByUrl('/admin/bultos/sin-traslado')
       })
     } else if (this.type == "envio") {
-      alert("PROPIO")
       this.envioService.updateAttributes(this.obTraslado.id, { ...this.obTraslado, estado_traslado: "asignado_propio"}).subscribe(() => {
         console.log("Se cambio estado traslado a asignado como propio")
         this.router.navigateByUrl('/admin/envios/sin-traslado')
