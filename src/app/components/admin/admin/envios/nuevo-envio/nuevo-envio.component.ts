@@ -46,7 +46,7 @@ export class NuevoEnvioComponent implements OnInit {
       fecha_disponibilidad: new Date(),
       comentario_traslado: comentarioTrasladoForm,
       fecha_asignacion: new Date(),
-      estado: 'pendiente de asignacion',
+      estado: 'pendiente de retiro',
       estado_traslado: "sin_asignar"
     }
   }

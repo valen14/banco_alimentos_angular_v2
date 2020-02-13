@@ -155,4 +155,8 @@ export class CargaPaquetesComponent implements OnInit {
     })
   }
 
+  verPaquete(paquete) {
+    alert("A implementar")
+  }
+
 }

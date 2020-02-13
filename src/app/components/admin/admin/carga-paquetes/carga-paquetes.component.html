@@ -135,7 +135,7 @@
                             <p class="card-text">Ubicacion: {{paquete.ubicacion}}
                             </p>
                             <div class="row d-flex justify-content-center">
-                                <button class="btn btn-info">Ver</button>
+                                <button class="btn btn-info" (click)="verPaquete(paquete)">Ver</button>
                                 <button class="btn btn-danger" (click)="eliminarPaquete(paquete)">Eliminar</button>
                             </div>
                         </div>

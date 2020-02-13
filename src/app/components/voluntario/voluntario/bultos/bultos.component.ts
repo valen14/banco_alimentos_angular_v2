@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Bulto, BultoApi, OrganizacionDonanteApi, VoluntarioApi } from 'src/app/service/lbservice';
+import { Bulto, BultoApi, OrganizacionDonanteApi, VoluntarioApi, Voluntario, AsignacionTrasladoBultoApi, AsignacionTrasladoBulto } from 'src/app/service/lbservice';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -10,81 +10,69 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class BultosComponent implements OnInit {
 
   filter: String
-  bultos = []
-  donantes = []
-  idUserLog
-  voluntarios=[]
+  asignaciones: any[]
+  voluntario: Voluntario
+  donantes: any[]
 
   constructor(private ar: ActivatedRoute,
     private router: Router,
-    private bultosService: BultoApi,
-    private donantesService: OrganizacionDonanteApi,
-    private voluntarioService: VoluntarioApi) { 
-      const emailUserLog= sessionStorage.getItem('email')
-      this.voluntarioService.findOne({where:{email: emailUserLog}}).subscribe((voluntario) => {
-        console.log(voluntario)
-        this.idUserLog=voluntario['id']    
+    private voluntarioService: VoluntarioApi,
+    private asignacionesService: AsignacionTrasladoBultoApi,
+    private donantesService: OrganizacionDonanteApi) {
+    const emailUserLog = sessionStorage.getItem('email')
+    this.filter = this.ar.snapshot.params['filter']
+    this.donantesService.find().subscribe((donantes) => {
+      this.donantes=donantes;
+    })
+    this.voluntarioService.findOne<Voluntario>({ where: { email: emailUserLog } }).subscribe((voluntario) => {
+      this.voluntario = voluntario
+      this.ar.paramMap.subscribe((params) => {
+        this.filter = params.get('filter')
         this.obtenerBultos()
       })
-    }
+
+    })
+  }
 
   ngOnInit() {
-
   }
 
   obtenerBultos() {
-    this.ar.paramMap.subscribe((params) => {
-      this.filter = params.get('filter')
+    console.log("Obtiene bultos")
+    this.asignacionesService.find<AsignacionTrasladoBulto>({
+      where: {
+        voluntarioId: this.voluntario.id,
+        estado: this.filter
+      },
+      include:{
+        relation: "bulto",
+        scope: {
+          include: {
+            relation: "organizacionDonantes"
+          }
+        }
+      }
+    }).subscribe((asignaciones) => {
+      console.log(asignaciones)
+      this.asignaciones = asignaciones
     })
-    this.bultosService.find({
-      where: { 
-        
-          voluntarioId: this.idUserLog
-      
-      }
-    }).subscribe((bultos) => { this.bultos = bultos })
-    switch (this.filter) {
-
-      case 'solicitudes':
-
-        break;
-        case 'aceptados':
-          
-          break;
-      default:{
-       
-      }
-        this.donantesService.find().subscribe((donantes) => {
-          this.donantes=donantes;
-          console.log(donantes)
-        })
-        
-    }
   }
 
-  obtenerDonante(bulto:Bulto){
+  obtenerDonante(bulto: Bulto) {
     var razon_social
     this.donantes.forEach((donante) => {
-      if(donante.id == bulto.organizacionDonanteId)
-        razon_social= donante.razon_social
+      if (donante.id == bulto.organizacionDonanteId)
+        razon_social = donante.razon_social
     })
-     return razon_social 
+    return razon_social
   }
 
-
-
-
-
-  aceptarTrasladoButtonClick() {
-    alert("A desarrollar") 
+  aceptarAsignacion(asig) {
+    alert("A desarrollar")
   }
 
-  rechazarTrasladoButtonClick() {
-    alert("A desarrollar") 
-  }
-
-  verDetallesButtonClick(id: number){
-    alert("a desarrollar")
+  rechazarAsignacion(asig) {
+    alert("A desarrollar")
   }
 
 }

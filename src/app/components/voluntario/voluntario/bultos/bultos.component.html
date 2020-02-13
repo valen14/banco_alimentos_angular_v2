@@ -3,32 +3,30 @@
     <!--<caption>Envios: {{filter}}</caption>-->
     <thead>
       <tr>
-        <th scope="col">Descripcion</th>
-        <th scope="col">Peso</th>
-        <th scope="col">Volumen</th>
+        <th scope="col">Origen</th>
+        <th scope="col">Descripcion del bulto</th>
+        <th scope="col">Vehiculo requerido</th>
         <th scope="col">Fecha de disponibilidad</th>
         <th scope="col">Fecha Maxima de Traslado</th>
-        <th scope="col">Comentario de Traslado</th>
-        <!--<th scope="col">Estado</th> -->
-        <th scope="col">Origen</th>  
-        <th scope="col">Destino</th>       
+        <th scope="col">Estado</th>
+        <th scope="col" *ngIf="filter == 'pendiente'">Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let bulto of bultos">
-        <th>{{bulto.descripcion}}</th>
-        <!--<th>{{bulto.peso}}</th>-->
-        <th>{{bulto.volumen[0] && envio.volumen[1]}}</th>
-        <th>{{bulto.fecha_disponibilidad}}</th>
-        <th>{{bulto.fecha_vencimiento}}</th>
-        <!--<th>{{bulto.comentario_traslado}}</th>-->
-        <!--
-        <th *ngIf="filter == 'sin-asignar'">
-          <button class="btn btn-info btn-small" (click)="verEnvioButtonClick(envio.id)">Asignar traslado</button>
+      <tr *ngFor="let asig of asignaciones">
+        <th>{{obtenerDonante(asig.bulto)}}</th>
+        <th>{{asig.bulto.descripcion}}</th>
+        <th>{{asig.bulto.volumen}}</th>
+        <th>{{asig.bulto.fecha_disponibilidad}}</th>
+        <th>{{asig.fecha_traslado}}</th>
+        <th>{{asig.estado}}</th>
+        
+        <th *ngIf="filter == 'pendiente'">
+          <button class="btn btn-success btn-small"
+          (click)="aceptarAsignacion(asig)">Aceptar</button>
+          <button class="btn btn-danger btn-small"
+          (click)="rechazarAsignacion(asig)">Rechazar</button>
         </th>
-        <th *ngIf="filter !== 'sin-asignar'">
-           {{obtenerOrganizacionBeneficiaria(envio)}}
-        </th> -->
       </tr>
     </tbody>
   </table>

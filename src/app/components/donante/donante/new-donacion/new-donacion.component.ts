@@ -59,7 +59,7 @@ export class NewDonacionComponent implements OnInit {
     const fechaVencimientoForm=this.donacionForm.get('fecha_vencimiento').value
     const auto= this.donacionForm.get('auto').value
     const camioneta= this.donacionForm.get('camioneta').value
-    const camion= this.donacionForm.get('auto').value
+    const camion= this.donacionForm.get('camion').value
     let vehiculos = []
     if(auto) {vehiculos.push("auto")}
     if(camioneta) {vehiculos.push("camioneta")}

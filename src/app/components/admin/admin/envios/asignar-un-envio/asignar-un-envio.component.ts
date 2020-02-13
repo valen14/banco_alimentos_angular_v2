@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BultoApi, EnvioApi, Bulto, Envio, VoluntarioApi, Voluntario, VehiculoApi, Vehiculo, AsignacionTrasladoBulto, AsignacionTrasladoBultoApi } from 'src/app/service/lbservice';
+import { BultoApi, EnvioApi, Bulto, Envio, VoluntarioApi, Voluntario, VehiculoApi, Vehiculo, AsignacionTrasladoBulto, AsignacionTrasladoBultoApi, AsignacionEnvioApi } from 'src/app/service/lbservice';
 
 @Component({
   selector: 'app-asignar-un-envio',
@@ -19,7 +19,8 @@ export class AsignarUnEnvioComponent implements OnInit {
     private bultoService: BultoApi,
     private envioService: EnvioApi,
     private voluntarioService: VoluntarioApi,
-    private asignacionBultoService: AsignacionTrasladoBultoApi) {
+    private asignacionBultoService: AsignacionTrasladoBultoApi,
+    private asignacionEnvioService: AsignacionEnvioApi) {
 
     this.id = this.ar.snapshot.params['id']
     this.type = this.ar.snapshot.params['type']
@@ -74,18 +75,36 @@ export class AsignarUnEnvioComponent implements OnInit {
         this.router.navigateByUrl('/admin/bultos/sin-traslado')
       })
     } else if (this.type == "envio") {
-
+      this.envioService.updateAttributes(this.obTraslado.id, { ...this.obTraslado, estado_traslado:"asignado_vol"}).subscribe(() => {
+        console.log("Se cambio estado traslado")
+      })
+      this.asignacionEnvioService.create({
+        envioId: this.obTraslado.id,
+        voluntarioId: vol.id,
+        estado: "pendiente",
+        fecha_traslado: Date.now()
+      }).subscribe(()=>{
+        console.log("Se creo asignacion")
+        this.router.navigateByUrl('/admin/envios/sin-traslado')
+      })
     }
+    //ACA ENVIAR MAIL
+    // EN vol.email ESTA LA DIRECCION DONDE ENVIAR
+    // EN this.type ESTA SI ES UN BULTO O UN ENVIO
   }
 
   asignarPropio() {
     if(this.type == "bulto") {
       this.bultoService.updateAttributes(this.obTraslado.id, {...this.obTraslado, estado_traslado:"asignado_propio" }).subscribe(()=>{
-        console.log("Se cambio estado traslado")
+        console.log("Se cambio estado traslado a asignado como propio")
         this.router.navigateByUrl('/admin/bultos/sin-traslado')
       })
     } else if (this.type == "envio") {
-
+      alert("PROPIO")
+      this.envioService.updateAttributes(this.obTraslado.id, { ...this.obTraslado, estado_traslado: "asignado_propio"}).subscribe(() => {
+        console.log("Se cambio estado traslado a asignado como propio")
+        this.router.navigateByUrl('/admin/envios/sin-traslado')
+      })
     }
   }
 
